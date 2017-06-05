@@ -74,3 +74,20 @@ $scope.getOrderHistory = function(){
    	    
     console.log( $scope.myOrder);
 })
+
+
+.controller('BuyProductTrackCtrl', function($scope, $rootScope,$ionicLoading,OrderService, Product,$cordovaToast, $ionicLoading,$ionicHistory, $ionicNavBarDelegate,$rootScope,$state, $stateParams) {      
+    $rootScope.userData = JSON.parse(localStorage.getItem("userData")) || null;
+    root = $rootScope;
+    scope = $scope;
+    
+    console.log($stateParams);
+    $scope.myOrder = $rootScope.buyProduct[$stateParams.index] || [];
+    
+    
+   	        
+   	console.log($rootScope.buyProduct);    
+   	        
+   	    
+    console.log( $scope.myOrder);
+})

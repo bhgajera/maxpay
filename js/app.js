@@ -622,6 +622,13 @@ angular.module('starter', ['ionic','ngCordova', 'starter.controllers', 'starter.
     controller:'BuyProductDetailCtrl'
   })
   
+   .state('buy_product_track',{
+    url:'/buy_product_track/:index',
+    templateUrl:'templates/buyProduct/buyProductTrack.html',
+    controller:'BuyProductTrackCtrl'
+  })
+  
+  
   .state('profile',{
     url:'/profile',
     templateUrl:'templates/profile/profile.html',
