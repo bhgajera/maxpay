@@ -1,0 +1,45 @@
+
+ <ion-view view-title="Epin List">   
+  <ion-content class="epinpage">
+    <ion-list>
+    	<ion-item ng-if="msg != null">{{msg}}</ion-item> 
+      <ion-item ng-if="epins.length > 0" ng-repeat="epin in epins" class="referencelist">        
+        <div  class="item item-divider header" ng-click="toggleGroup(epin)" ng-class="{active: isGroupShown(epin)}" >
+                    <i class="icon" ng-class="isGroupShown(epin) ? '' : ''"></i>
+                  &nbsp;
+                   <span> <i class="icon ion-pin people"></i>{{epin.EpinNumber}}  <i class="icon ion-arrow-down-b arrow down"></i><i class="icon ion-arrow-up-b arrow up"></i></span>
+                  
+                  <!-- <span>copy Epin Number</span> -->
+        </div>
+        <div class="item-accordion detail" ng-show="isGroupShown(epin)"> 
+                 
+                 <div class="row item">
+                    <div class="col col-80"><span class="pinnumber">{{epin.EpinNumber}}</span></div>
+                    <div class="col col-20 text-right"><button ng-click="copyEpinNo(epin.EpinNumber)" class="button button-small ion-ios-copy-outline "></button></div>
+                  </div>
+                  
+                  <div class="row item">
+                    <div class="col col-40"><span>Created On</span></div>
+                    <div class="col col-60 text-right"><span>{{epin.created_date}}</span></div>
+                  </div>
+                  <div class="row item">
+                    <div class="col col-40"><span>Used By</span></div>
+                    <div class="col col-60 text-right"><span>{{epin.used_by}}</span></div>
+                  </div>
+                  <div class="row item">
+                    <div class="col col-40"><span>Sold Date</span></div>
+                    <div class="col col-60 text-right"><span>{{epin.sold_date}}</span></div>
+                  </div>
+              
+        </div> 
+        
+      </ion-item>
+    </ion-list>
+    <!-- <ion-infinite-scroll
+      ng-if="moreData" 
+      distance="1%" 
+      on-infinite="showepins()"
+      spinner="crescent">
+    </ion-infinite-scroll>  -->
+  </ion-content>
+</ion-view>

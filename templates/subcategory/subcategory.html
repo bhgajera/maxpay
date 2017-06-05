@@ -1,0 +1,23 @@
+<ion-view view-title="Sub Category" >
+  <ion-content class="subcategory">   
+      <!-- <div  ng-repeat="item in subcategory">
+        <a>          
+          <span style="font-size: 25px">{{ item.product_sub_cat_id }}</span>
+          <span style="font-size: 25px">{{ item.product_sub_cat }}</span>          
+        </a>
+      </div> -->
+      <!--  style="color:#157ed2" -->
+    	<ion-list>
+	  		<ion-checkbox ng-change="selectedType(item.product_sub_cat_id)" ng-repeat="item in subcategory.sub_categories" ng-model="category[$index]">
+	  		{{item.product_sub_cat}} 
+	  		</ion-checkbox>
+		</ion-list>
+		<div class="row" ng-if="subcategory.sub_categories.length" align="center">
+			<div class="col">
+				<!-- <button style="color: #ffffff;background-color: #2abb9c;width: 130px;" class="button" ng-click="viewProducts()">View</button> -->				
+				<button class="button button-block button-energized" ng-click="viewProducts()">View</button>
+			</div> 
+		</div>
+  	</ion-content>
+</ion-view>
+    

@@ -1,0 +1,32 @@
+
+<ion-view view-title="My Reference">
+  <ion-content class="referencepage">
+    <ion-list>
+<!--      <ion-item ng-if="msg != null">{{msg}}</ion-item>-->
+      <ion-item ng-repeat="epin in refObj" class="referencelist">
+        <div  class="header" ng-click="toggleGroup(epin)" ng-class="{active: isGroupShown(epin)}" >
+          <i class="icon" ng-class="isGroupShown(epin) ? '' : ''"></i>
+          &nbsp;
+          <span> <i class="icon ion-person people"></i> {{epin.name}}  <i class="icon ion-arrow-down-b arrow down"></i><i class="icon ion-arrow-up-b arrow up"></i></span>
+         
+          <!-- <span>copy Epin Number</span> -->
+        </div>
+        <div class="item-accordion detail" ng-show="isGroupShown(epin)">
+          
+          <div class="item">BVPL Id  : {{epin.bluepaymax_id}}</div>
+          <div class="item">Reg Date  : {{epin.registration_date}}</div>
+          <div class="item">Mobile : {{epin.mobile}}</div>
+          <div class="item">No of Members : {{epin.no_of_member}}</div>
+          <div class="item">Status : {{epin.memstatus}}</div>
+        </div>
+
+      </ion-item>
+    </ion-list>
+    <!-- <ion-infinite-scroll
+     ng-if="moreData"
+     distance="1%"
+     on-infinite="showepins()"
+     spinner="crescent">
+     </ion-infinite-scroll>  -->
+  </ion-content>
+</ion-view>

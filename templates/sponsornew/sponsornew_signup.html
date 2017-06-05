@@ -1,0 +1,67 @@
+ <ion-view view-title="Member Signup">
+  <ion-content class="">
+  	<div class="list list-inset">
+      <!--  -->
+      <label class="item item-input item-stacked-label c_item2">
+       <!-- <span class="input-label">Sponsor bluepay id</span> -->
+        <input type="text" ng-model="newmember.sponser_bluepay_id"  placeholder="Sponser bluepay id">
+      </label>
+      <div class="item c_radio">
+      	Sponsor Side: 
+	      <span style="padding-right: 10px;" >
+	        <input type="radio" name="type" id="newuser" value="L" ng-model="newmember.sponserside"  ng-change="setType('L')">&nbsp&nbsp<label for="newuser" > Left</label>
+	      </span>
+	      <span style="padding-right: 10px;">
+	        <input type="radio" name="type" id="newmember" value="R" ng-model="newmember.sponserside" ng-change="setType('R')">&nbsp&nbsp <label for="newmember"> Right</label>
+	      </span>
+	  </div>
+      <label class="item item-input item-stacked-label c_item2">
+      	<!-- <span class="input-label">Epin number</span> -->
+        <input type="number" ng-model="newmember.epin_number" placeholder="Epin number">
+      </label>
+      <label class="item item-input item-stacked-label c_item2">
+      	<!-- <span class="input-label">Name</span> -->
+        <input type="text" ng-model="newmember.name" placeholder="Name">
+      </label>
+      <label class="item item-input item-stacked-label c_item2 c_DOB">
+      	<span class="input-label">DOB</span>
+        <input type="date" ng-model="newmember.dob" placeholder="Data of birth">
+      </label>
+      <div class="item c_radio">
+      	Gender : 
+	      <span style="padding-right: 10px;" >
+	        <input type="radio" name="gender_type" id="male" value="1" ng-model="newmember.gender">&nbsp&nbsp<label for="male" > Male</label>
+	      </span>
+	      <span style="padding-right: 10px;">
+	        <input type="radio" name="gender_type" id="female" value="0" ng-model="newmember.gender">&nbsp&nbsp <label for="female"> Female</label>
+	      </span>
+	  </div>
+      <label class="item item-input item-stacked-label c_item2">
+      	<!-- <span class="input-label">Email</span> -->
+        <input type="text" ng-model="newmember.email_id"  placeholder="Email">
+      </label>
+      <label class="item item-input item-stacked-label c_item2">
+      	<!-- <span class="input-label">Phone No</span> -->
+        <input type="number" ng-model="newmember.phone" placeholder="Phone No">
+      </label>
+      <label class="item item-input item-stacked-label c_item2">
+      	<!-- <span class="input-label">Nominee name</span> -->
+        <input type="text" ng-model="newmember.nominee_name"   placeholder="Nominee name">
+      </label>
+      <label class="item item-input item-stacked-label c_item2">
+      	<!-- <span class="input-label">Nominee relation</span> -->
+        <input type="text" ng-model="newmember.nominee_relation"   placeholder="Nominee relation">
+      </label>
+
+    </div>
+    <div class="list list-inset" align="center">
+      <p style="color:red;">{{msg}}</p>
+    </div>
+    <div class="padding">
+      <button class="button button-block button-energized c_button"  ng-click="register_NEWmember()">
+        Create account
+      </button>
+    </div>
+
+  </ion-content>
+</ion-view>  

@@ -1,0 +1,75 @@
+<!--
+  This template loads for the 'detail' state (app.js)
+  'product' is a $scope variable from DetailCtrl
+-->
+<ion-view view-title={{product.product_headline}} ng-init="singleprvariant()">
+  <ion-content class="product-detail">
+    <ion-slide-box class="full-image" auto-play="true" active-slide="activeSlide" show-pager="true" does-continue="true">
+      <ion-slide ng-repeat="image in product.images track by $index" repeat-done="repeatDone()">
+        <div class="box">
+          <img class="full-image" src="{{image['image'+($index+1)+'_850_1036']}}" ng-click="showImages('{{image['image'+($index+1)+'_850_1036']}}')" alt="" />
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+
+    <!-- Add to cart button -->
+    <div class="detai-block">
+      <div class="variantbox" ng-if="product_var_boolean==true">
+        <div class="select-box">
+          <select ng-options="opt.value as opt.value for opt in variants track by opt.value" ng-model="variantprice" ng-change="setVariantprice(variantprice)">
+        <option value=''>variants</option>
+        </select>
+          <i class="icon ion-arrow-down-b"></i>
+        </div>
+        <div class="listbox" ng-if="currentVariants.length">
+          <div class="row">
+            <div class="col col-50"><span>Price</span></div>
+            <div class="col col-50 text-right"><span ng-bind="currentVariants[0].price | currency:'&#8377;'"></span></div>
+          </div>
+          <div class="row">
+            <div class="col col-50"><span>PV</span></div>
+            <div class="col col-50 text-right"><span ng-bind="currentVariants[0].product_bv_value"></span></div>
+          </div>
+          <div class="row">
+            <div class="col col-50"><span>Qty</span></div>
+            <div class="col col-50 text-right"><span ng-bind="currentVariants[0].qty"></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sortdetail">
+        <div class="row" ng-if="product.usual_retail_price">
+          <div class="col col-50"><span class="oldprice">Old Price</span></div>
+          <div class="col col-50 text-right"><span class="oldprice">{{ product.usual_retail_price | currency:'&#8377;'}}</span> </div>
+        </div>
+        <div class="row" ng-if="product.discounted_amount">
+          <div class="col col-50"><span>New Price</span></div>
+          <div class="col col-50 text-right">
+            <span class="newprice " ng-if="!currentVariants.length">{{ product.discounted_amount | currency:'&#8377;'}}</span>
+            <span class="newprice" ng-if="currentVariants.length">{{ currentVariants[0].price | currency:'&#8377;'}}</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-50"><span>Shipping Cost</span></div>
+          <div class="col col-50 text-right"><span class="shippingprice" ng-if="product.shipping_cost">{{ product.shipping_cost  | currency:'&#8377;'}}</span>
+            <span class="shippingprice" ng-if="product.shipping_cost==0">Free</span>
+          </div>
+        </div>
+        <div class="row total">
+          <div class="col col-50"><span>Total Cost</span></div>
+          <div class="col col-50 text-right"><span class="newprice">{{  totalAmount() | currency:'&#8377;'}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="longdetail">
+        <h4>Description</h4>
+        <!--  class="energized" -->
+        <p>{{product.product_description}}</p>
+      </div>
+    </div>
+  </ion-content>
+  <div class="bar bar-footer productfooter">
+    <div class="button-section">
+      <button class="button button-energized " ng-click="addToCart(product)" ng-disabled="product_var_boolean && !currentVariants.length "><i class="ion-bag"></i> Add To Cart</button>
+    </div>
+  </div>
+</ion-view>

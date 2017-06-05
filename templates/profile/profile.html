@@ -1,0 +1,109 @@
+ <ion-view view-title="My Profile">
+  <ion-content class="" style="overflow: scroll;">
+    <!-- profile -->
+    <!-- ion-list>
+    	<ion-item ng-if="msg != null">{{msg}}</ion-item>
+    </ion-list>
+    </ion-infinite-scroll>  -->
+    <!-- <div style="height: 50px"></div> -->    
+    <div class="row">
+        <div class = "col col-33">
+            <div class="profile_img_div">
+                <div class="profile_img" ng-click="changeProfile()">
+                    <!-- <img src="img/placeholder.png"> -->
+                    <img alt="" ng-if="profileData.profile_pic.length>0" src={{profileData.profile_pic}}>
+                      <img alt="" ng-if="profileData.profile_pic.length<=0" src='img/placeholder.png'>
+                </div>
+            </div>
+        </div>
+        <div class="col col-67">
+            <div class="profile_right_div">
+                <ion-item class="c_item">
+                    <ion-label>Name :</ion-label>
+                    <span>{{profileData.name}}</span>
+                </ion-item>
+            </div>
+        </div>
+    </div>
+    
+    <div class="profiledata_field">
+        <ion-item class="c_item">
+            <i class="icon ion-email"></i>
+            <ion-label>Email Id :</ion-label>
+            <span>{{profileData.email_id}}</span>
+        </ion-item>
+
+        <ion-item class="c_item">
+            <i class="icon ion-calendar"></i>
+            <ion-label>DOB :</ion-label>
+            <span>{{profileData.dob}}</span>
+        </ion-item>
+
+        <ion-item class="c_item">
+            <i class="icon ion-iphone" style="font-size: 37px; "></i><!-- left: -11%; -->
+            <ion-label>Phone :</ion-label>
+            <span>{{profileData.mobile_no}}</span>
+        </ion-item>
+
+        <ion-item class="c_item">
+            <i class="icon ion-calendar"></i>
+            <ion-label>Date of Registration</ion-label>
+            <span>{{profileData.date_of_reg}}</span>
+        </ion-item>
+
+        <ion-item class="c_item">
+            <i class="icon ion-person"></i>
+            <ion-label>Nominee Name :</ion-label>
+            <span>{{profileData.nominee_name}}</span>
+        </ion-item>
+
+        <ion-item class="c_item">
+            <i class="icon ion-person"></i>
+            <ion-label>Nominee Relation :</ion-label>
+            <span>{{profileData.nominee_relation}}</span>
+        </ion-item>
+
+        <ion-item class="c_item">
+            <i class="icon ion-home"></i>
+            <ion-label>Address :</ion-label>
+            <span>{{profileData.address}}</span>
+        </ion-item>
+
+        <ion-item class="c_item">
+            <i class="icon ion-person-stalker"></i>
+            <ion-label>Gender :</ion-label>
+            <span>{{profileData.gender}}</span>
+        </ion-item>
+
+        <ion-item class="c_item">
+            <i class="icon ion-ios-paper"></i>
+            <ion-label>Branch Name :</ion-label>
+            <span>{{profileData.branch_name}}</span>
+        </ion-item>
+
+        <ion-item class="c_item">
+            <i class="icon ion-social-usd"></i>
+            <ion-label>Account No :</ion-label>
+            <span>{{profileData.account_no}}</span>
+        </ion-item>
+
+        <ion-item class="c_item">
+            <i class="icon ion-social-usd"></i>
+            <ion-label>IFSC Code :</ion-label>
+            <span>{{profileData.ifsc_code}}</span>
+        </ion-item>
+
+        <ion-item class="c_item">
+            <i class="icon ion-social-usd"></i>
+            <ion-label>Branch Address :</ion-label>
+            <span>{{profileData.branch_address}}</span>
+        </ion-item>
+
+        <ion-item class="c_item">
+            <i class="icon ion-ios-paper"></i>
+            <ion-label>Pan No :</ion-label>
+            <span>{{profileData.pan_no}}</span>
+        </ion-item>
+    </div>
+  </ion-content>
+</ion-view>  

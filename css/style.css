@@ -1,0 +1,339 @@
+/* Empty. Add your own CSS if you like */
+.submenu > div { padding-left: 40px;}
+
+.product-title{
+  display: block;
+  /* Fallback for non-webkit */
+  display: -webkit-box;
+  max-width: 400px;
+  /* Fallback for non-webkit */
+  margin: 0 auto;
+  line-height: 1.4;
+  -webkit-line-clamp:3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+ } 
+
+.error-cls {
+    padding: 5px;
+    margin: auto;
+    display: block;
+    background: #79ff79;
+    width: 70%;
+    border-radius: 15px;
+}
+.msg-cls{
+  padding-left: 5px;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px; height: 0; overflow: hidden;
+}
+ 
+.video-container iframe, .video-container object, .video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/*
+ * http://docs.angularjs.org/api/ng/directive/ngShow#usage_animations
+ */
+.list .item.item-accordion {
+  line-height: 38px;
+  padding-top: 0;
+  padding-bottom: 0;
+  -webkit-transition: 0.09s all linear;
+  transition: 0.09s all linear;
+}
+.list .item.item-accordion.ng-hide {
+  line-height: 0px;
+}
+.list .item.item-accordion.ng-hide-add,
+.list .item.item-accordion.ng-hide-remove {
+  display: block !important;
+}
+
+.profile_img_div {
+    text-align: center;
+}
+
+.profile_img_div a {
+    display: block;
+    padding: 8px 0 0;
+}
+
+.profile_img {
+    border-radius: 72%;
+    overflow: hidden;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+}
+
+ion-item.c_item {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    padding: 15px 0 5px;
+    margin: 0;
+}
+
+.c_item ion-label {
+    display: block;
+    color: #a7a4a4;
+    padding-bottom: 7px;
+}
+
+.c_item  span {
+    display: block;
+    padding: 0 0 4px;
+}
+.profile_right_div {
+    padding: 10px 0 0 20px;
+}
+.profiledata_field ion-item.c_item {
+    width: 85%;
+    margin-left: auto;
+    position: relative;
+    overflow: unset;
+    
+}
+
+.profiledata_field .c_item i {
+    position: absolute;
+    left: -14%;
+    font-size: 26px;
+    top: 13px;
+    color: #a7a4a4;
+}
+.profile_img img {
+    width: 100%;
+}
+
+.c_item2
+{
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: 1px solid #ddd;
+}
+.c_radio {
+    border-right: none;
+    border-left: none;
+    clear: both;
+}
+
+.c_button
+{
+  font-size: 16px;
+  width: 90%;
+  display: block;
+}
+
+.c_item2 span
+{
+  color: #ddd;
+}
+
+.c_item2:before {
+    content: "";
+    position: absolute;
+    height: 9px;
+    width: 1.3px;
+    background: #ddd;
+    bottom: 0;
+    left: 0;
+}
+
+.c_item2:after {
+    content: "";
+    position: absolute;
+    height: 9px;
+    width: 1.3px;
+    background: #ddd;
+    bottom: 0;
+    right: 0;
+}
+
+.c_radio:before {
+    content: "";
+    position: absolute;
+    height: 9px;
+    width: 1.3px;
+    background: #ddd;
+    bottom: 0;
+    left: 0;
+}
+
+.c_radio:after {
+    content: "";
+    position: absolute;
+    height: 9px;
+    width: 1.3px;
+    background: #ddd;
+    bottom: 0;
+    right: 0;
+}
+
+.c_DOB span.input-label {
+    position: absolute;
+    left: 15px;
+    color: rgba(172, 172, 172, 0.72);
+}
+
+.w_logo {
+    float: left;
+    height: 46px;
+    background: #fff;
+    vertical-align: middle;
+    width: 80px;
+    padding: 10px 5px;
+    border-radius: 4px;
+}
+
+.transaction {
+    float: left;
+    width: 60%;
+}
+
+.transaction span {
+    display: block;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.transaction span.debit {
+    color: #ed8c72;
+    font-weight: normal;
+    padding:0;
+}
+
+.item.wallet_box_main {
+    border: none;
+}
+.w_order, .credit
+{
+  font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+    
+}
+
+.myorder_btn
+{
+  background: transparent !important;
+  border: 1px solid #157ed2 !important;
+  border-radius: 4px !important;
+  color: #157ed2 !important;
+}
+
+
+.msg-container {
+  float: left;
+  padding: 15px;
+  width: 100%;
+}
+
+.messagebox {
+  border: 1px solid #157ed2;
+  border-radius: 5px;
+  float: left;
+  padding: 20px 15px;
+  text-align: center;
+  width: 100%;
+}
+
+
+.success h3 {color:#31e252}
+.fail h3 {color:red}
+
+.wallet_box_header .w_date  { font-size: 14px; color:#ed8c72;}
+.statementlist {     padding: 0px 5px;background-color: #fff;margin: 5px 10px;border-radius: 5px; border-top:solid 4px #2988bc; }
+
+.referencelist {padding: 0px; border: none;padding: 2px 15px;}
+.referencelist .header {padding: 10px 5px; background: #eee; position: relative; padding-right: 35px;border-radius: 4px; border-top:3px solid #2988bc;  }
+.referencelist .header span{overflow: hidden;width: 100%;text-overflow: ellipsis;display: inline-block; font-size: 14px; vertical-align: middle;}
+.referencelist .header.active { border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;}
+
+.referencelist .header:first-child { margin-top: 16px;}
+.referencelist .header .people{font-size: 18px; margin-right: 10px;}
+.referencelist .header .arrow { position: absolute;right: 15px;top: 0;bottom: 0;margin: auto;vertical-align: middle;height: 20px;display: block;font-size: 18px;}
+.referencelist .header .arrow.up { display: none;}
+.referencelist .header.active .arrow.up { display: block;}
+.referencelist .header.active .arrow.down { display: none;}
+.referencelist .detail .item{margin-left:0;margin-right: 0; font-size: 13px; }
+.referencelist .detail .item:last-child{ border-bottom-left-radius: 5px;border-bottom-right-radius: 5px; border-bottom: 2px solid #2988bc;}
+.referencepage .detail .item { padding: 10px 15px;}
+
+
+.orderlist .ordernumber {font-size: 16px;}
+.orderlist .order-amount { text-align: right; font-size: 16px; }
+.orderlist .orderdate {color: darkgrey;font-size: 14px;}
+.progresslist { position: relative;}
+.progresslist:before { width: 2px; background: #aaa; content: ""; display: block; position: absolute; top: 9px; bottom: 9px; left: 3px; z-index: 0;}
+.progresslist li{ text-transform: uppercase; vertical-align: middle; font-size: 10px; position: relative; z-index: 2px;}
+.progresslist li .icon { margin-right: 10px; font-size: 10px; color: #aaa;}
+.progresslist li:last-child .icon { color: #157ed2;}
+
+.productlist .productimage { width: 100%; background-color: #fff; background-size:contain; background-position: center; background-repeat: no-repeat; margin-bottom: 2px; border-radius: 5px 5px 0 0;}
+.productlist .productimage:before{ padding-top: 100%; content: ""; display: block;}
+.productlist .listitem { padding: 2px;}
+.productlist .listitem a {display: block;background: #2988bc;padding: 2px 1px 2px;border-radius: 5px;}
+.productlist .product-title { font-size: 14px; margin-bottom: 5px; color: #fff;text-align: center;}
+.productlist .product-title { font-size: 14px;}
+.productlist .price { font-size:13px;}
+.productlist .old-price { font-size:12px;}
+.categorytitle { background: #ddd; padding: 10px 0; margin-bottom: 5px;}
+.productlist .productinfo {  background: #fcfdfe; border-radius:0 0 5px 5px; padding: 5px;}
+.productlist .productinfo .product-title{color: #157ed2; text-align: left;}
+.categorylist .productimage { border-radius: 5px; margin-bottom: 5px;}
+
+.product-detail .box {padding: 10px;}
+.slider-pager .slider-pager-page { opacity: 0.9; color: #ccc;}
+.slider-pager .slider-pager-page.active { color: #157ed2;}
+.wallethistorypage { background: #ddd;}
+.productpage { background: #ddd;}
+
+.select-box {width: 100%;position: relative;background: #157ed2;padding: 10px 20px 10px 10px;vertical-align: middle;color: #fff;border-radius: 5px;display: inline-block;}
+.select-box .icon {position: absolute;right: 10px;top: 0;bottom: 0;vertical-align: middle;height: 18px;margin: auto;}
+.select-box select{border: none;background: none;color: #fff;-webkit-appearance: none; width: 100%;}
+.product-detail .listbox { margin: 15px 0;background: #fcfdfe;border: solid 2px #2988bc;border-width: 1px 0px 2px;}
+.product-detail .listbox .row { margin: 0px; padding: 0px;border-bottom: solid 1px #2988bc;}
+.product-detail .detai-block { padding: 0 15px;}
+.product-detail .sortdetail { background: #eee; margin: 10px 0; }
+.product-detail .sortdetail .row{border-bottom: solid 1px #ddd; margin: 0px}
+.product-detail .sortdetail .total { background-color: #2988bc; color: #fff; font-size: 16px; padding-top: 5px;padding-bottom: 5px;}
+.product-detail .longdetail h4{color: #157ed2;font-size: 17px;}
+.product-detail .longdetail p{ font-size: 13px;}
+.sortdetail .oldprice { text-decoration: line-through;color: #888;}
+.productfooter .button-section {width: 100%; padding: 0 10px;    }
+.productfooter .button-section .button{ width: 100%;}
+.full-image { background-size: contain;  background-repeat: no-repeat; background-position: center; height: 100%; width: 100%;}
+
+.epinpage .pinnumber { padding: 6px 0; display: block;}
+.epinpage .button { font-size: 25px; font-weight: bold; width: 50px;}
+.epinpage .header {margin: 0px; }
+.epinpage .detail .row { margin: 0px; border: none; border-bottom: solid 1px #ddd; border-left: solid 1px #ddd;border-right: solid 1px #ddd;}
+.reportpage .header { margin: 0px;}
+
+.orderdetail .orderwrapper { padding: 0 15px;}
+.orderdetail .orderblock { background: #eee; margin: 15px 0; overflow: hidden;}
+.orderdetail .orderblock .row { margin: 0px; border-bottom: solid 1px #ddd; padding: 5px 5px;}
+.orderdetail .orderblock .row:last-child{border-bottom:none;}
+.orderdetail .title{background: #2988bc; color: #fff; padding: 10px 10px; margin: 0px;}
+.orderdetail .progresslist { margin: 15px 15px;}
+.orderdetail .progresslist:before { width: 4px;}
+.orderdetail .progresslist li { font-size: 14px; padding-bottom: 10px;}
+.orderdetail .progresslist li:last-child { padding-bottom: 0px;}
+.orderdetail .progresslist li .icon {font-size: 12px;}
+
+.reloadcardpage h2{ font-size: 20px;}
+.coverimage { width: 100%; background-color: #fff; background-size:contain; background-position: center; background-repeat: no-repeat; margin-bottom: 2px; }
+.coverimage:before{ padding-top: 70%; content: ""; display: block;}

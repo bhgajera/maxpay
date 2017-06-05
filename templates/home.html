@@ -1,0 +1,74 @@
+<ion-view view-title="Home">
+  <!-- <ion-header-bar class="bar bar-light item-input-inset dark-bg">
+            <form ng-submit="searchTxt(txtSearch)" ng-controller="HomeCtrl">
+              <label class="item-input-wrapper">
+                <i class="icon ion-ios-search placeholder-icon"></i>
+                <input type="search" placeholder="Search" ng-model="txtSearch">
+              </label>
+            </form>
+  </ion-header-bar> -->
+  <ion-content class="productpage">
+    <div class="bar bar-light item-input-inset dark-bg">
+      <!-- <form ng-submit="searchTxt(txtSearch)" style="height:100%;width: 100%;"> --><!--  ng-controller="HomeCtrl" -->
+        <label class="item-input-wrapper">
+          <i class="icon ion-ios-search placeholder-icon"></i>
+          <input type="search" placeholder="Search" ng-model="txtSearch" ng-change="searchTxt(txtSearch)">          
+        </label>        
+      <!-- </form>  -->     
+    </div>   
+      <div  ng-if="suggestedtxt" ng-repeat="i in suggestedtxt">
+        <ion-radio ng-value="i.auto_search" ng-model="selectedsug.auto_search" ng-click="gotoSearch(i.auto_search)">
+          {{i.auto_search}}
+        </ion-radio> 
+         <!-- <ion-item ng-repeat="i in suggestedtxt">{{i.auto_search}}</ion-item>           -->
+      </div>
+     <ion-slide-box show-pager="true" class="full-image" auto-play="true" does-continue="true">
+        <ion-slide ng-repeat="i in banner_image_arr track by $index">
+          <div class="box">
+            <img class="full-image" src="{{i.banner_image}}" alt=""/>
+          </div>
+        </ion-slide>
+      </ion-slide-box>
+    <!-- <button class="button button-block button-energized" ng-click="getallProducts()">
+      All Products
+    </button>  -->  
+    <div class="row flex-wrap productlist categorylist">
+      <div class="col-50 listitem" ng-repeat="item in allcategory">
+        <a ng-click="getsubcategory(item)">
+            <div class="productimage" style="background-image:url({{ item.cat_img }})">
+                <img class="full-image hide"  src="{{ item.cat_img }}"  alt=""/>
+              </div>
+          
+          <span class="product-title">{{ item.product_category }}</span>
+        </a>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
+
+
+ <!-- <h4 class="text-center">Discover our topsellers</h4> -->
+    <!-- List of items: 2 columns-->
+    <!-- <div class="row flex-wrap">
+      <div class="col-50" ng-repeat="item in products">
+        <a ui-sref="detail">
+          <img class="full-image" src="{{ item.thumb }}" alt=""/>
+          <span class="product-title">{{ item.name }}</span>
+          <span class="price dark" ng-if="!item.sale_price">${{ item.price }}</span>
+          <span class="price dark" ng-if="item.sale_price">${{ item.sale_price}}</span>
+          <span class="old-price" ng-if="item.sale_price">${{ item.price }}</span>
+        </a>
+      </div>
+    </div>-->
+    <!-- BELOW CONTENT IS SHIFTED TO NEW SCREEN  -->
+    <!-- <div class="row flex-wrap">
+      <div class="col-50" ng-repeat="item in products">
+        <a ui-sref="detail">
+          <img class="full-image" src="{{ item.image1_850_1036 }}" alt=""/>
+          <span class="product-title">{{ item.product_headline }}</span>
+          <span class="price dark" ng-if="item.usual_retail_price">${{ item.usual_retail_price}}</span>
+          <span class="old-price" ng-if="item.discounted_amount">${{ item.discounted_amount }}</span>
+        </a>
+      </div>
+    </div> -->
+    <!-- category div -->

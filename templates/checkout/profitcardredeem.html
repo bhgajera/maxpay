@@ -1,0 +1,26 @@
+ <ion-view view-title="Profit Card Redeem">  
+  <ion-content class="">   
+    <!-- <div class="padding text-center">      
+           
+    </div> -->
+    <div ng-if="errors" class="list list-inset" align="center">
+      <p style="color:red;">{{errorMsg}}</p>
+    </div>
+    <!-- Proficard reedem Form --> 
+    	<h4 class="padding">Profit Card Redeem</h4>
+      
+      	<ion-checkbox>
+  	  		Do you have Profit Card?
+  		  </ion-checkbox> 
+    		<div class="list list-inset">   	
+    	      <label class="item item-input">
+    	        <input type="text" placeholder="">
+    	      </label>   
+    	  </div>      
+      <div class="padding">      
+        <button class="button button-block button-energized" ng-click="">
+          Apply Profit Card
+        </button>
+      </div>        
+  </ion-content>
+</ion-view>

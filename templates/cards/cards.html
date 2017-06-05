@@ -1,0 +1,30 @@
+<ion-view view-title="Profit Cards">
+  <ion-content class="">
+    <ion-item ng-if="msg != null">{{msg}}</ion-item>
+    <ion-list class="productlist">
+      <ion-item ng-repeat="item in cards" class="listitem">
+        <a ng-click="getSingleProduct(item)">
+
+          <div class="productimage" style="background-image:url({{ item.image1_850_1036}})">
+            <img class="full-image hide" src="{{ item.image1_850_1036 }}" alt="" />
+          </div>
+
+
+          <div class="productinfo">
+            <span class="product-title" style="color:#157ed2;white-space: pre;">{{ item.product_headline }}</span>
+            <span class="price dark" ng-if="item.usual_retail_price">{{ item.usual_retail_price | currency:'&#8377;'}}</span>
+            <span class="old-price" ng-if="item.discounted_amount">{{ item.discounted_amount | currency:'&#8377;'}}</span><br/>
+            <span style="color:#157ed2">PV: {{item.product_bv_value }}</span>
+          </div>
+        </a>
+      </ion-item>
+      <!-- <ion-infinite-scroll 
+          ng-if="moreData" 
+          distance="1%" 
+          on-infinite="loadMore()"
+          spinner="crescent">
+        </ion-infinite-scroll> -->
+    </ion-list>
+  </ion-content>
+</ion-view>
+

@@ -1,0 +1,136 @@
+<!--
+  This template loads for the 'dcart' state (app.js)
+-->
+<ion-view view-title="Cart"> 
+  <ion-content class="cart">
+   <h4>{{message}} </h4>
+   <!-- <h4 ng-if="$root.cartProducts == undefined || $root.cartProducts.length==0">No items to show in your Cart</h4> -->
+   <div ng-if="$root.cartReloadableCards" class="list">
+      <div class="item item-thumbnail-left" ng-init="checkOutQuantity(item)">
+          <img ng-if="$root.cartReloadableCards.rechargevalue<=19990" ng-src="./img/reloadablecard.jpg"  alt=""/>
+          <h2 class="positive" style="color:#157ed2" ng-if="$root.cartReloadableCards.rechargevalue<=19990">Reloadable Reward Card</h2>
+          <img ng-if="$root.cartReloadableCards.rechargevalue>=19990" ng-src="./img/reloadablecard.jpg"  alt=""/>
+          <h2 class="positive" style="color:#157ed2" ng-if="$root.cartReloadableCards.rechargevalue>=19990">Non Reloadable Max Card</h2>
+          <div>
+            <i style="color:#157ed2">PV :{{$root.cartReloadableCards.pv}}</i> 
+            <div class="col">
+              <!-- <select  ng-options="opt.id as opt.quan for opt in quantity" ng-model="selectedquantity" ng-init="setQuantity(selectedquantity,item)" ng-change="setQuantity(selectedquantity,item)"></select> -->
+              <a href="#" class="trash" style="color:#157ed2">
+                <i class="ion-trash-a" ng-click="deleteCartreloadablecard($root.cartReloadableCards)"></i>
+              </a>
+              <div class="pull-right">
+               {{$root.cartReloadableCards.rechargevalue | currency:'&#8377;'}}                
+              </div>
+            </div>          
+          </div>
+      </div>
+      <div class="">
+        <button class="button button-block button-energized" ng-click="checkoutCart($root.cartReloadableCards)">
+                Checkout
+        </button>
+      </div>
+   </div>
+
+
+
+   <div ng-if="$root.cartfuelCards" class="list">
+      <div class="item item-thumbnail-left" ng-init="checkOutQuantity(item)">
+          <img ng-if="$root.cartfuelCards.rechargevalue<=19990" ng-src="./img/fuelcard.jpg"  alt=""/>
+          <h2 class="positive" style="color:#157ed2" ng-if="$root.cartfuelCards.rechargevalue<=19990">EXTRA POWER FUEL CARD</h2>
+          <img ng-if="$root.cartfuelCards.rechargevalue>=19990" ng-src="./img/fuelcard.jpg"  alt=""/>
+          <h2 class="positive" style="color:#157ed2" ng-if="$root.cartfuelCards.rechargevalue>=19990">Non Reloadable EXTRA POWER FUEL CARD</h2>
+          <div>
+            <i style="color:#157ed2">PV :{{$root.cartfuelCards.pv}}</i> 
+            <div class="col">
+              <!-- <select  ng-options="opt.id as opt.quan for opt in quantity" ng-model="selectedquantity" ng-init="setQuantity(selectedquantity,item)" ng-change="setQuantity(selectedquantity,item)"></select> -->
+              <a href="#" class="trash" style="color:#157ed2">
+                <i class="ion-trash-a" ng-click="deleteCartfuelcard($root.cartfuelCards)"></i>
+              </a>
+              <div class="pull-right">
+               {{$root.cartfuelCards.rechargevalue | currency:'&#8377;'}}                
+              </div>
+            </div>          
+          </div>
+      </div>
+      <div class="">
+        <button class="button button-block button-energized" ng-click="checkoutCart($root.cartfuelCards)">
+                Checkout
+        </button>
+      </div>
+   </div>
+
+
+  <div ng-if="$root.cartProducts.length>0" class="list">
+    <div ng-repeat="item in $root.cartProducts track by $index">
+      <div class="item item-thumbnail-left" ng-init="checkOutQuantity(item)">
+         <!--  <img src={{item.image1_850_1036}} alt=""/> -->
+          <img src="{{item.images.image_1.image1_850_1036}}" alt=""/>
+          <h2 class="positive" style="color:#157ed2">{{item.product_headline}}</h2>
+          <div>
+
+            <!--
+             date : 15-4-17  Removed as per the BPM task document
+             <i class="ion-stop positive" style="color:#157ed2"></i>M
+             -->
+
+            <div class="col">
+              <select  ng-options="opt.id as opt.quan for opt in quantity" ng-model="selectedquantity" ng-init="setQuantity(selectedquantity,item)" ng-change="setQuantity(selectedquantity,item)"></select>
+              <a href="#" class="trash" style="color:#157ed2">
+                <i class="ion-trash-a" ng-click="deleteCartItem(item)"></i>
+              </a>
+              <div class="pull-right">
+               {{item.total_amount | currency:'&#8377;'}} 
+               <!-- {{item.usual_retail_price *$root.quantity | currency:'&#8377;'}} -->
+              </div>
+            </div>  
+            <div class="pull-right">
+               {{item.product_bv_value}} PV
+               <!-- {{item.usual_retail_price *$root.quantity | currency:'&#8377;'}} -->
+              </div>        
+          </div>
+        </div>  
+        
+      </div>    
+
+      <!-- Calculate price -->
+      <div class="item stable-bg">        
+        <b>Shipping</b>
+        <div class="pull-right">{{ totalShippingAmount | currency:'&#8377;'}}</div>
+        <!-- <div class="pull-right" ng-if="totalShippingAmount ==0">{{freeshippingmsg}}</div> -->
+        <!-- <div class="pull-right" ng-if="totalShippingAmount==0">Free shipping</div> -->
+      </div>      
+      <div class="item stable-bg">
+        <b>Total PV</b>
+        <div class="pull-right">{{ totalpv }}</div>
+      </div>
+      <div class="item stable-bg">
+        <b>Total</b>
+        <div class="pull-right">{{ totalCardAmount | currency:'&#8377;'}}</div>
+      </div>
+      <!-- <button class="button button-block button-energized" ng-click="shippingTotal()">
+           shipping
+        </button> -->
+    </div>
+
+    <div class="padding">
+        <!--  ui-sref="checkout_address" --><!-- below button moved to next screen -->
+        <!-- <button ng-if="$root.cartProducts.length>0" class="button button-block button-energized" ng-click="checkoutCart(cartProducts)">
+            Checkout
+        </button> -->
+        <div ng-if="$root.userData==null">
+          <button ng-if="$root.cartProducts.length>0" class="button button-block button-energized" ng-click="checkoutAs(cartProducts)">
+            Checkout As
+          </button>
+        </div>
+        <div ng-if="$root.userData !==null">
+            <button ng-if="$root.cartProducts.length>0" class="button button-block button-energized" ng-click="checkoutCart(cartProducts)">
+            Checkout
+            </button>
+        </div>
+        <!-- <button ng-if="$root.cartProducts.length>0" class="button button-block button-energized" ng-click="checkoutAs(cartProducts)">
+            Checkout As
+        </button> -->
+    </div>
+
+  </ion-content>
+</ion-view>

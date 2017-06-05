@@ -1,0 +1,36 @@
+<!--
+  This template loads for the 'home' state (app.js)
+  'slides' and 'products' is $scope variable in HomeCtrl
+-->
+<ion-view view-title="Search products">
+  <ion-content class="">
+    <!-- Slider using slide box --> 
+   
+    <ion-item ng-if="msg != null">{{msg}}</ion-item>
+    <div class="row flex-wrap productlist">
+         
+
+        <div class="col col-50 listitem" ng-repeat="item in searchProductData">
+            <a ng-click="getSingleProduct(item)">
+             <!--  <img class="full-image" src="{{ item.image1_850_1036 }}" alt=""/> -->
+              <div class="productimage" style="background-image:url({{ item.image1_850_1036 }})">
+                <img class="full-image hide"  src="{{ item.image1_850_1036 }}" style="height:200px;" alt=""/>
+              </div>
+               <div class="productinfo">
+              <span class="product-title">{{ item.product_headline }}</span>
+              <span class="price dark" ng-if="item.usual_retail_price">{{ item.usual_retail_price | currency:'&#8377;'}}</span>
+              <span class="old-price" ng-if="item.discounted_amount">{{ item.discounted_amount | currency:'&#8377;'}}</span><br/>
+              <span class="price dark">PV: {{item.product_bv_value }}</span>
+                </div>
+            </a>
+        </div>
+
+        <ion-infinite-scroll 
+          ng-if="moreSearch" 
+          distance="1%" 
+          on-infinite="searchData()"
+          spinner="crescent">
+        </ion-infinite-scroll> 
+    </div>
+  </ion-content>
+</ion-view>

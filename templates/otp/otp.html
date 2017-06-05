@@ -1,0 +1,38 @@
+<ion-view view-title="Otp" hide-nav-bar="true" class="stable-bg">
+  <ion-content>
+    <!-- Logo -->
+    <div class="padding text-center">
+      <!-- <h1>
+        <i class="energized ion-bag"></i>
+      </h1>
+      <h2 class="energized">ionShop</h2>
+      <p class="energized">Mobile E-commerce</p> -->
+      <img src="img/logo.png" style="width:51%; height:61%" />       
+    </div>
+
+    <!-- Login form -->
+    <div class="list list-inset">      
+      <label class="item item-input">
+        <input type="text" ng-model="user.otp" placeholder="####">
+      </label>
+    </div>
+    <div ng-if="errors" class="list list-inset" align="center">
+      <p style="color:red;">{{errorMsg}}</p>
+    </div>
+    <div class="padding">
+      <!-- <button class="button button-block button-energized" ui-sref="home">
+        Login
+      </button> -->
+      <button class="button button-block button-energized" ng-click="verify()">
+        Verify Otp
+      </button>
+    </div>
+
+    <!-- Other links -->
+    <div class="padding row">     
+      <div class="col">
+        <a ng-click="resendOtp()" class="dark">ResendOTP</a>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,66 @@
+<!--
+  This template loads for the 'checkout_address' state (app.js)
+-->
+<ion-view view-title="Billing Information">
+  <ion-content class="">
+    <div class="list">
+      <!-- <div class="{{cls}} ">
+        <span>{{msg}}</span>
+      </div> -->
+      <div class="item">
+        <input type="text" placeholder="First name" ng-model="address.firstName" />
+      </div>
+      <div class="item">
+        <input type="text" placeholder="Last name" ng-model="address.lastName"/>
+      </div>
+      <div class="item">
+        <input type="text" placeholder="Mobile Number" ng-model="address.mobileno"/>
+      </div>
+      <div class="item"> 
+        <input type="text" placeholder="Email Id" ng-model="address.email"/>
+      </div>
+      <div class="item">
+        <input type="text" placeholder="Address" ng-model="address.address"/>
+      </div>
+    <!--   <div class="item">
+        <input type="text" placeholder="Address line 2" ng-model="address.address2"/>
+      </div> -->
+      <div class="item">
+        <input type="text" placeholder="Country" ng-model="address.country"/>
+      </div>
+      <div class="item">
+        <input type="text" placeholder="State" ng-model="address.state"/>
+      </div>      
+      <div class="item"> 
+        <input type="text" placeholder="City" ng-model="address.city"/>
+      </div>
+      <div class="item">
+        <input type="text" placeholder="Area" ng-model="address.area"/>
+      </div>
+      <div class="item">
+        <input type="text" placeholder="Pincode" ng-model="address.zip"/>
+      </div>      
+      <div class="item">
+        <input type="text" placeholder="Comment" ng-model="address.comment"/>
+      </div>
+      <div class="item">
+        <input type="text" placeholder="Landmark" ng-model="address.landmark"/>
+      </div>
+      <div class="item">
+        <input type="text" placeholder="Company" ng-model="address.company"/>
+      </div>
+      <div class="{{cls}} ">
+        <span>{{msg}}</span>
+      </div>      
+    </div>
+
+    <!-- Next button -->
+    <div class="padding">
+    <!-- ui-sref="checkout_shipping" -->    
+      <button class="button button-block button-energized" ng-click="checkout_shipping()">
+        Continue
+      </button>
+    </div>
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,104 @@
+<!--
+  This template loads for the 'detail' state (app.js)
+  'product' is a $scope variable from DetailCtrl
+-->
+<ion-view view-title={{wishProductDetails.product_headline}}>
+  <ion-content class="product-detail">
+    <!-- Slider using slide box dispplays Static images -->
+    <ion-slide-box class="full-image" auto-play="true">
+    <!-- previous static images ng repeat -->
+
+      <!-- <ion-slide ng-repeat="image in singleProductImages.">
+        <div class="box">
+          <img class="full-image" src="{{ image }}" alt=""/>
+        </div>
+      </ion-slide> -->
+      <ion-slide>
+        <div class="box">
+          <img src="{{wishProductDetails.image1_850_1036}}" class="full-image">
+        </div>
+      </ion-slide>
+    </ion-slide-box>    
+
+    <!-- Choose item option -->
+    <div class="row">
+
+      <div class="col item-input item-options">
+        <select>
+          <option>Blue</option>
+          <option selected>Green</option>
+          <option>Red</option> 
+        </select>
+      </div>
+
+      <div class="col item-input item-options">
+        <select>
+          <option>Size S</option>
+          <option selected>Size M</option>
+          <option>Size L</option>
+        </select>
+      </div>
+
+    </div>
+
+    <!-- Add to cart button -->
+    <div class="row add-cart">
+    <!-- PREVIOUS default div element  -->
+      <!-- <div class="col">
+        <p class="price dark" ng-if="!wishProductDetails.sale_price">${{ wishProductDetails.price }}</p>
+        <p class="price dark" ng-if="wishProductDetails.sale_price">${{ wishProductDetails.sale_price}}</p>
+        <span class="old-price" ng-if="wishProductDetails.sale_price">${{ wishProductDetails.price }}</span>
+      </div> -->
+      <div class="col">
+        <p class="price dark" ng-if="!wishProductDetails.usual_retail_price">{{ wishProductDetails.usual_retail_price }}</p>
+        <p class="price dark" ng-if="wishProductDetails.usual_retail_price">{{ wishProductDetails.discounted_amount}}</p>
+        <span class="old-price" ng-if="wishProductDetails.usual_retail_price">{{ wishProductDetails.usual_retail_price }}</span>         
+      </div>
+
+      <div class="col">
+        <button class="button " style="color: red;" ng-click="removeToWishList(wishProductDetails)">
+          <i class="ion-heart"></i>
+        </button>
+
+        <button class="button button-energized"  ng-click="checkoutCart(wishProductDetails)">
+          <i class="ion-bag"></i>
+          Add To Cart
+        </button>       
+      </div>
+    </div>
+ 
+    <!-- Description -->
+    <div class="linediv-l"></div>
+    <div class="padding">
+      <h4 class="positive">Description</h4>
+      {{ wishProductDetails.product_description}}
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <h5 class="positive">Available color</h5>
+        <i class="ion-stop positive"></i>
+        <i class="ion-stop energized"></i>
+        <i class="ion-stop dark"></i>
+      </div>
+      <div class="col">
+        <h5 class="positive">Available size</h5>
+        S, M, L, XL
+      </div>
+    </div>
+
+    <!-- Item -->
+    <div class="item-divider padding">Reviews</div>
+    <div class="list">
+      <div class="item item-avatar" ng-repeat="review in wishProductDetails.reviews">
+        <img src="{{ review.avatar }}" alt=""/>
+        <h2>{{ review.name }}</h2>
+        <p>{{ review.content }}</p>
+        <p>
+          <i class="ion-android-star" ng-repeat="start in range(review.stars) track by $index"></i>
+          <i class="ion-android-star-outline" ng-repeat="start in range(5 - review.stars) track by $index"></i>
+        </p>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

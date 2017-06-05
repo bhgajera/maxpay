@@ -1,0 +1,27 @@
+<ion-view view-title="Forgotpass" hide-nav-bar="true" class="stable-bg">
+  <ion-content>
+    <!-- Logo -->
+    <div class="padding text-center">      
+       <!--  <i class="ion-bag"></i> --><!-- class="energized ion-bag" -->
+        <img src="img/logo.png" style="width:51%; height:61%" />       
+    </div>
+
+    <!-- Forgotpass form -->
+    <div class="list list-inset">
+      <label class="item item-input">
+        <input type="email" ng-model="user.email_id" placeholder="abc@gmail.in">
+      </label>     
+    </div>
+    <div ng-if="errors" class="list list-inset" align="center">
+      <p style="color:red;">{{errorMsg}}</p>
+    </div>
+    <div class="padding">
+      <!-- <button class="button button-block button-energized" ui-sref="home">
+        Login
+      </button> -->
+      <button class="button button-block button-energized" ng-click="Forgotpass()">
+        Forgot Password
+      </button>
+    </div>        
+  </ion-content>
+</ion-view>

@@ -1,0 +1,44 @@
+<ion-view view-title="Reload Card">
+  <ion-content class="">
+  <div class="list list-inset">
+    <ion-item ng-if="msg != null">{{msg}}</ion-item>
+      <label class = "item item-input item-select">
+           <div class = "input-label">
+              Select Card
+           </div>          
+           <select ng-model="reloaddata.card" ng-change="selectedCard(reloaddata.card)">
+            <!-- <option selected>Option 2</option> -->
+            <option ng-repeat="item in items"  >
+          
+          <!--dummy dropdown {{ item.name }} -->
+          {{item}}
+          </option>
+           </select>
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Recharge Value</span>
+        <input type="number" ng-model="reloaddata.rechargevalue" placeholder="Enter value between 3000 to 20000" ng-change="calculatePv(reloaddata.rechargevalue)">
+      </label>   
+
+      <!-- <label class="item item-stacked-label">
+        <span class="input-label">Point Value</span>
+        <input type="number" ng-model="reloaddata.pv" placeholder="45">
+      </label>
+      <br/>
+      <br/> -->
+      <div>
+            <ion-item>Point Value{{reloaddata.pv}}</ion-item>
+      </div>
+      
+      <div class="padding">
+        <!-- <button class="button button-block button-energized" ng-click="reloadCard(reloaddata)">
+          Reload Card
+        </button> -->
+        <button class="button button-block button-energized" ng-click="reloadCard(reloaddata)">
+         Buy Now
+        </button>
+        {{reCardData}}
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

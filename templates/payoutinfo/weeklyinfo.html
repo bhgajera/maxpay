@@ -1,0 +1,69 @@
+
+ <ion-view view-title="Weekly Report">
+  <ion-content class="reportpage">
+    <ion-list>
+    	<ion-item ng-if="msg != null">{{msg}}</ion-item> 
+      <ion-item ng-if="weeklyreports.length > 0" ng-repeat="weekreport in weeklyreports" class="referencelist">        
+        <div  class="item item-divider header" ng-click="toggleGroup(weekreport)" ng-class="{active: isGroupShown(weekreport)}" >
+                    <i class="icon" ng-class="isGroupShown(weekreport) ? '' : ''"></i>
+                  &nbsp;
+                  <!--<span>Registration No : {{weekreport.regno}}</span>-->
+                   <span> <i class="icon ion-pie-graph people"></i>{{weekreport.regno}}  <i class="icon ion-arrow-down-b arrow down"></i><i class="icon ion-arrow-up-b arrow up"></i></span>
+                 <!-- <img  style="display: inline-block;" class="pull-right" width="90" height="90" ng-src="./img/logo.png">-->
+        </div>
+        <div class="item-accordion detail" ng-show="isGroupShown(weekreport)">                 
+                
+                  <div class="row item">
+                    <div class="col col-70"><span >Llpv</span></div>
+                    <div class="col col-30 text-right"> {{weekreport.llpv}}</div>
+                  </div>
+                  
+                  <div class="row item">
+                    <div class="col col-70"><span>Rpv</span></div>
+                    <div class="col col-30 text-right"><span>{{weekreport.rpv}}</span></div>
+                  </div>
+                  <div class="row item">
+                    <div class="col col-70"><span>Llpv</span></div>
+                    <div class="col col-30 text-right"><span>{{weekreport.llpv}}</span></div>
+                  </div>
+                 
+                  <div class="row item">
+                    <div class="col col-70"><span>Paid pv</span></div>
+                    <div class="col col-30 text-right"><span>{{weekreport.paidpv}}</span></div>
+                  </div>
+                  <div class="row item">
+                    <div class="col col-70"><span>Pv Income</span></div>
+                    <div class="col col-30 text-right"><span>{{weekreport.pvincome}}</span></div>
+                  </div>
+                   <div class="row item">
+                    <div class="col col-70"><span>Single LegIncome</span></div>
+                    <div class="col col-30 text-right"><span>{{weekreport.singleLegIncome}}</span></div>
+                  </div>
+                  <div class="row item">
+                    <div class="col col-70"><span>Single Legdeduction</span></div>
+                    <div class="col col-30 text-right"><span>{{weekreport.singleLegdeduction}}</span></div>
+                  </div>
+                  <div class="row item">
+                    <div class="col col-70"><span>Level Income</span></div>
+                    <div class="col col-30 text-right"><span>{{weekreport.LevelIncome}}</span></div>
+                  </div>
+                   <div class="row item">
+                    <div class="col col-70"><span>Total Income</span></div>
+                    <div class="col col-30 text-right"><span>{{weekreport.totalincome}}</span></div>
+                  </div>
+                   <div class="row item">
+                    <div class="col col-70"><span>Leadership Income</span></div>
+                    <div class="col col-30 text-right"><span>{{weekreport.LeadershipIncome}}</span></div>
+                  </div>
+        </div> 
+        
+      </ion-item>
+    </ion-list>
+    <!-- <ion-infinite-scroll
+      ng-if="moreData" 
+      distance="1%" 
+      on-infinite="showweeklyreports()"
+      spinner="crescent">
+    </ion-infinite-scroll>  -->
+  </ion-content>
+</ion-view>

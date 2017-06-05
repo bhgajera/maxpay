@@ -1,0 +1,62 @@
+<!-- this screen is made in refrence with billing screen web view screen shot 
+is similar to shipping Address(few field removed)-->
+<ion-view view-title="Shipping Information"> 
+  <ion-content class="">
+    <div class="list">
+     <div class="item">
+        Copy billing address
+        <label class="checkbox" style="float:right;">
+          <input type="checkbox" ng-model="shipping.copyAdd" ng-change = "copyAddress();" >
+        </label>
+      </div>      
+      <div class="item">
+        <input type="text" placeholder="First name" ng-model="shipping.firstName" />
+      </div>
+      <div class="item">
+        <input type="text" placeholder="Last name" ng-model="shipping.lastName"/>
+      </div>
+      <!-- <div class="item">
+        <input type="text" placeholder="Company name" ng-model="Shipping.companyName"/>
+      </div>  -->  
+      <div class="item">
+        <input type="text" placeholder="Mobile Number" ng-model="shipping.mobileno"/>
+      </div>   
+      <div class="item"> 
+        <input type="text" placeholder="Email Id" ng-model="shipping.email"/>
+      </div>      
+      <div class="item">
+        <input type="text" placeholder="Address" ng-model="shipping.address"/>
+      </div>
+      <div class="item">
+        <input type="text" placeholder="Country" ng-model="shipping.country"/>
+      </div> 
+      <div class="item">
+        <input type="text" placeholder="State/Province" ng-model="shipping.state"/>
+      </div>         
+      <div class="item"> 
+        <input type="text" placeholder="City" ng-model="shipping.city"/>
+      </div>
+      <div class="item">
+        <input type="text" placeholder="Area" ng-model="shipping.area"/>
+      </div>      
+      <div class="item">
+        <input type="text" placeholder="Zip/Pin Code" ng-model="shipping.zip"/>
+      </div> 
+      <div class="item">
+        <input type="text" placeholder="Comment" ng-model="shipping.comment"/>
+      </div>
+      <div class="item">
+        <input type="text" placeholder="Landmark" ng-model="shipping.landmark"/>
+      </div>      
+      <div class="{{cls}} ">
+        <span>{{msg}}</span>
+      </div>      
+    </div>   
+    <div class="padding">    
+      <button class="button button-block button-energized" ng-click="goTopayment()">
+        Continue
+      </button>
+    </div>
+
+  </ion-content>
+</ion-view>

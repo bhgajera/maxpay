@@ -1,0 +1,84 @@
+ <ion-view view-title="Wallet Statement">
+  <ion-content class="wallethistorypage">
+    <ion-list>
+    	<ion-item ng-if="msg != null">{{msg}}</ion-item>
+      <!-- wallet_statement -->
+
+     <!--  <ion-item ng-if="wallet_statement.length > 0" ng-repeat="statement in wallet_statement">
+        
+        <div  class="item item-divider" 
+                          ng-click="toggleGroup(statement)"
+                          ng-class="{active: isGroupShown(statement)}" >
+                    <i class="icon" ng-class="isGroupShown(statement) ? '' : ''"></i>
+                  &nbsp;                 
+                  <span style="display: inline-block;">{{statement.serial_no}}. </span>
+                  <span style="display: inline-block;">Credit : {{statement.credit}}</span>
+                  <img  style="display: inline-block;" class="pull-right" width="90" height="90" ng-src="./img/logo.png">
+                 
+        </div>
+        <div class="item-accordion"                       
+                        ng-show="isGroupShown(statement)">              
+                 <div class="item">Debit  : {{statement.debit}}</div>
+                 <div class="item">Transaction Type : {{statement.trans_type}}</div>                 
+                 <div class="item">Date: {{statement.date}}</div>
+        </div> 
+        
+      </ion-item> -->
+     <!--  ng-if="wallet_statement.length > 0" ng-repeat="statement in wallet_statement" -->
+      <ion-item ng-if="wallet_statement.length > 0" ng-repeat="statement in wallet_statement | orderBy:'-date'" class="statementlist">
+        <div  class="wallet_box_main">
+          <div class="wallet_box">
+            <div class="wallet_box_header">
+                <div class = "row">
+                   <div class = "col col-60">
+                      <div class="w_order">Order No: {{statement.serial_no}}</div>
+                      <div class="w_date">{{statement.date}}</div>
+                   </div>
+                   <div class = "col col-40">
+                      <div class="credit text-right">&#8377;{{statement.credit}}</div>
+                   </div>
+                </div>
+            </div>
+
+            <div class="wallet_box_contain">
+                <div class = "row">
+                   <div class = "col col-80">
+                     <!-- <div class="w_logo">
+                          <img  style="display: inline-block; width: 100%;" class="pull-left" ng-src="./img/icon170x64.png" >
+                      </div>-->
+                      <div class="transaction">
+                        <span>{{statement.trans_type}}</span>
+                        <span class="debit">{{statement.debit}}</span>
+                      </div>
+                   </div>
+                   <div class = "col col-50">
+                      
+                   </div>
+                </div>
+            </div>
+          </div>
+            <!-- <span style="display: inline-block;">{{statement.serial_no}}. </span> -->
+            
+            
+           <!--  <div style="display: inline-block;">
+               <p>{{statement.debit}}</P>
+               <p>{{statement.trans_type}}</p> 
+            </div> -->
+        </div>
+        <!-- <div class="item-accordion"                       
+                        ng-show="isGroupShown(statement)">              
+                 <div class="item">Debit  : {{statement.debit}}</div>
+                 <div class="item">Transaction Type : {{statement.trans_type}}</div>                 
+                 <div class="item">Date: {{statement.date}}</div>
+        </div>  -->
+        
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll
+      ng-if="moreData" 
+      distance="1%" 
+      on-infinite="getWalletStatement()"
+      spinner="crescent">
+    </ion-infinite-scroll> 
+  </ion-content>
+</ion-view>     

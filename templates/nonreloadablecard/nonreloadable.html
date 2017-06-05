@@ -1,0 +1,32 @@
+<ion-view view-title="Non Reloadable Max Card">
+  <ion-content class="reloadcardpage">
+    <div class="list list-inset">
+      <div>
+          <h2>Non-reloadable - Max Card</h2>
+          <div class="coverimage" style="background-image:url(./img/nonreloadablecard.jpg)">
+                <img  class="full-image hide" width="400" height="300" ng-src="./img/nonreloadablecard.jpg">  
+          </div>
+          
+          <p style="text-align: justify">Non-reloadable, with a validity for 1 year Freedom to employees to choose a gift of their choice Easy to manage, monitor and distribute Card can be redeemed in all offline stores and multiple redemptions are allowed. Card can be redeemed during store promotions/offers. SMS alert on every transactions Cash can't be withdrawn In case card is misplaced or stolen bluepaymax.com is not responsible. This card cannot be exchanged for cash/gift cards/credit notes. This card cannot be returned or refunded.</p>
+      </div>   
+       <ion-item ng-if="msg != null">{{msg}}</ion-item>  
+
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Recharge Value</span>
+            <input type="number" ng-model="nonreloadabledata.rechargevalue" placeholder="Enter value between 20,000 to 49,990" ng-change="nonreloadablePv(nonreloadabledata.rechargevalue)">
+          </label>          
+          <div>              
+               <ion-item>
+              <span class="input-label">Point Value</span>
+               <span ng-if="nonreloadabledata.pv">{{nonreloadabledata.pv}}<span>
+               </ion-item>
+              
+          </div>
+          <div class="padding">
+            <button class="button button-block button-energized" ng-click="reloadableCardBuy(nonreloadabledata)">
+             Buy Now
+            </button>
+          </div>
+    </div>
+  </ion-content>
+</ion-view>

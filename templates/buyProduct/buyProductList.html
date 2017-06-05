@@ -1,0 +1,33 @@
+<ion-view view-title="My Orders">
+  <ion-content class="">   	
+   	<ion-item ng-if="msg != null">{{msg}}</ion-item>  
+   <ion-list>
+        <div ng-if="buyProduct.length > 0" ng-repeat="product in buyProduct track by $index" class="orderlist">
+                  <div class="item item-divider" >
+                    
+                     <div class = "row">
+                   <div class = "col col-60">
+                       <div class="ordernumber">{{$index+1}}. {{product.order_no}}</div>
+                       <div class="orderdate">{{product.order_date}}</div>
+                   </div>
+                   <div class="col col-40">
+                             <div class="order-amount">₹{{product.total_amount}}</div>
+                   </div>
+                      </div>
+                     
+                     <div class = "row">
+                   <div class = "col col-60">
+                       <ul class="progresslist">
+                           <li><i class="icon ion-record"></i>{{product.oActive}}</li>
+                           <li><i class="icon ion-record"></i>{{product.Active}}</li>
+                       </ul>
+                    </div>
+                    <div class="col col-40 col-bottom">
+                         <a class="button button-energized pull-right myorder_btn button-small" style="display: inline-block;" ng-href="#/buy_product_list/{{$index}}">Order Details</a>
+                    </div>
+                </div>                  
+            </div>
+        </div>
+      </ion-list>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,34 @@
+<ion-view view-title="Extra power fuel card">
+  <ion-content class="reloadcardpage">
+    <div class="list list-inset">
+      <div >
+        <h2>Extra power fuel card</h2>
+         <div class="coverimage" style="background-image:url(./img/fuelcard.jpg)">
+                <img class="full-image hide"  src="./img/fuelcard.jpg"  alt=""/>
+          </div>
+        
+          <p style="text-align: justify">
+           CARD CHARGE + SHIPPING CHARGE Rs. 300/- | Secured through a PIN | This card is valid till 3 years from the date of purchase | Multiple reloading option is available in this card Card can be redeemed in IOC outlets | SMS alert on every transaction | Cash can't be withdrawn | In the case c   
+
+          </p>
+      </div>
+      <ion-item ng-if="msg != null">{{msg}}</ion-item>  
+
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Recharge Value</span>
+            <input type="number" ng-model="fuelcarddata.rechargevalue" placeholder="Enter value between 3000 to 20000" ng-change="fuelcardPv(fuelcarddata.rechargevalue)">
+          </label>           
+          <div>
+            <ion-item>
+              <span class="input-label">Point Value</span>
+               <span ng-if="fuelcarddata.pv">{{fuelcarddata.pv}}<span>
+               </ion-item>
+          </div>
+          <div class="padding">
+            <button class="button button-block button-energized" ng-click="fuelcardCardBuy(fuelcarddata)">
+             Buy Now
+            </button>
+          </div>
+    </div>
+  </ion-content>
+</ion-view>

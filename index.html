@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<!-- <html> -->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    
+    <meta http-equiv="Content-Security-Policy" >
+    <title></title>
+
+
+    <!-- compiled css output -->
+    <link href="css/ionic.app.css" rel="stylesheet">
+    <!-- font-awesome.min.css -->
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <!-- cordova script (this will be a 404 during development) -->
+
+    <!--<script src="lib/angular-clipboard/angular-clipboard.js"></script>-->
+    <!-- ngCordova -->
+    <script src="lib/ng-cordova.min.js"></script>
+    <script src="cordova.js"></script>    
+    <!-- your app's js -->
+    <!-- wishListCtrl.js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
+    <script src="templates/member/member_signup.js"></script>
+    <script src="templates/checkout/checkout.js"></script>
+    <script src="templates/otp/otpController.js"></script>
+    <script src="templates/setting/setting.js"></script>
+    <script src="templates/cms/CMSCtrl.js"></script>
+    <script src="templates/profile/profile.js"></script>
+    <script src="templates/search/searchCtrl.js"></script>
+    <!-- categoryCtrl.js -->
+    <script src="templates/category/categoryCtrl.js"></script>
+    <script src="templates/buyProduct/BuyProductCtrl.js"></script>
+    <script src="templates/changePassword/changePassword.js"></script>
+    <script src="templates/forgotpass/forgotpassController.js"></script>
+    <script src="templates/allproducts/allproductsController.js"></script>
+    <script src="templates/allproducts/wishListCtrl.js"></script>
+    <script src="templates/subcategory/subcategoryController.js"></script>
+    <script src="templates/productbysubcategory/productbysubcategory.js"></script>
+    <script src="templates/reloadcard/reloadcard.js"></script>
+    <script src="templates/reloadablecard/reloadablecontroller.js"></script>
+    <script src="templates/nonreloadablecard/nonreloadablecontroller.js"></script>    
+    <script src="templates/fuelcard/fuelcardcontroller.js"></script>
+    <script src="templates/epin/epin.js"></script> 
+    <script src="templates/payoutinfo/payoutinfo.js"></script> 
+    <script src="templates/payoutinfo/weeklyinfo.js"></script>
+    <script src="templates/payoutinfo/repurchaseinfo.js"></script>  
+    <script src="templates/sponsornew/sponsornew.js"></script> 
+    <script src="templates/cards/cards.js"></script> 
+    <script src="templates/checkout/payment/checkout_paymentCtrl.js"></script>    
+  </head>
+  <body ng-app="starter" class="platform-android platform-cordova platform-webview">
+  <ion-side-menus>
+
+    <!-- Center content -->
+    <ion-side-menu-content>
+      <ion-nav-bar class="bar-positive" align-title="center">
+        <!-- Back button -->
+        <ion-nav-back-button>
+          Back
+        </ion-nav-back-button>
+
+        <!-- Burger button -->
+        <ion-nav-buttons side="left">
+          <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+          </button>
+        </ion-nav-buttons>
+
+        <!-- Cart button -->
+        <ion-nav-buttons side="right">
+          <button class="button button-icon button-clear ion-bag" ui-sref="cart" >
+            <span class="header-badge">{{$root.cartProducts.length}}</span>
+            <!-- <span class="header-badge">{{$root.cartReloadableCards.length}}</span> -->
+          </button>
+        </ion-nav-buttons>
+      </ion-nav-bar>
+
+      <!-- Main view content -->
+      <ion-nav-view animation="slide-left-right"></ion-nav-view>
+    </ion-side-menu-content>
+
+    <!-- Left menu -->
+    <ion-side-menu side="left">
+      <ion-content>
+
+        <ion-list>
+      
+          <div ng-repeat="group in groups">
+
+<ion-item class="item-stable" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}" ng-if="group.name == 'Home' && userData == null || group.name == 'Home' && userData != null " ui-sref="home"  menu-close>
+  <i class="icon {{group.image}}"></i>&nbsp;&nbsp;&nbsp;{{group.name}}
+  &nbsp;&nbsp;
+  <i ng-if="group.subMenu.length > 0" class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+</ion-item>
+
+
+<ion-item class="item-stable" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}"  ng-if="group.name == 'Category' && userData == null || group.name == 'Category' && userData != null" >
+  <i class="icon {{group.image}}"></i>&nbsp;&nbsp;&nbsp;{{group.name}}
+  &nbsp;&nbsp;
+  <i ng-if="group.subMenu.length > 0" class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+</ion-item>
+
+
+<ion-item class="item-stable" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}"  ng-if="group.name == 'About' && userData == null || group.name == 'About' && userData != null" >
+  <i class="icon {{group.image}}"></i>&nbsp;&nbsp;&nbsp;{{group.name}}
+  &nbsp;&nbsp;
+  <i ng-if="group.subMenu.length > 0" class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+</ion-item>
+
+
+<ion-item class="item-stable" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}" ng-if="group.name == 'Login' && userData == null" ui-sref='login' menu-close>
+  <i class="icon {{group.image}}"></i>&nbsp;&nbsp;&nbsp;{{group.name}}
+  &nbsp;&nbsp;
+  <i ng-if="group.subMenu.length > 0" class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+</ion-item>
+
+
+
+<ion-item class="item-stable"  ng-if="group.name == 'Logout' && userData != null" ng-controller="HomeCtrl" ng-click="logout()">
+  <i class="icon {{group.image}}"></i>&nbsp;&nbsp;&nbsp;{{group.name}}
+  &nbsp;&nbsp;
+  <i ng-if="group.subMenu.length > 0" class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+</ion-item>
+
+<ion-item class="item-stable" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}" ng-if="group.name == 'My Orders' &&  userData != null" ui-sref="buy_product_list" menu-close>
+  <i class="icon {{group.image}}"></i>&nbsp;&nbsp;&nbsp;{{group.name}}
+  &nbsp;&nbsp;
+  <i ng-if="group.subMenu.length > 0" class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+</ion-item>
+
+
+<ion-item class="item-stable" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}" ng-if="group.name != 'Home' && group.name != 'My Orders' && group.name != 'Category' && group.name != 'About' && group.name != 'Login' && group.name != 'Logout' && userData != null  ">
+  <i class="icon {{group.image}}"></i>&nbsp;&nbsp;&nbsp;{{group.name}}
+  &nbsp;&nbsp;
+  <i ng-if="group.subMenu.length > 0" class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+</ion-item>
+
+
+
+
+
+
+
+            <ion-item class="item-accordion submenu" ng-repeat="item in group.subMenu" ng-show="isGroupShown(group)" menu-close>
+
+              <div ng-if="item.name == 'Contact Admin' && userData != null"  ng-click="openContactadminURL()" ng-controller="HomeCtrl">
+              {{item.name}}
+              </div>
+
+              <div ng-if="item.name == 'Sponsor New' && userData != null" ui-sref="newmember_signup">
+                {{item.name}}
+              </div>
+
+              <div ng-if="item.image == 'ion-catt'" ng-controller="CategoryCtrl" ng-click="fetch_category_product(item.objCat)" ui-sref="product_category({product_id: item.objCat.product_category_id})">
+                {{item.name}}
+              </div>
+
+														<div ng-if="userData != null &&  item.name == 'Cards & Vouchers' ">
+                {{item.name}}
+              </div>
+
+
+              <div ng-if="item.name == 'Reloadable Card' && userData != null" ui-sref="reloadable">
+                {{item.name}}
+              </div>
+
+              <div ng-if="item.name == 'Non Reloadable Card' && userData != null" ui-sref="nonreloadable">
+                {{item.name}}
+              </div>
+
+              <div ng-if="item.name == 'Reload Your Card' && userData != null" ui-sref="reloadcard">
+                {{item.name}}
+              </div>
+              <div ng-if="item.name == 'Fuel Cards' && userData != null" ui-sref="fuelcard">
+                {{item.name}}
+              </div>
+              <div ng-if="item.name == 'Reloadable Fuel Card' && userData != null" ui-sref="reloadfuelcard">
+                {{item.name}}
+              </div>
+             
+
+
+            <div ng-if="item.name == 'Profit Cards' && userData != null" ui-sref="cards">
+              {{item.name}}
+            </div>
+
+
+            <div ng-if="item.name == 'Application Form' && userData != null" ng-click="openWeb('https://www.bluepaymax.com/member/uploads/business_tool/APPLICATION-FORM.pdf')">
+              {{item.name}}
+            </div>
+
+
+            <div ng-if="item.name == 'Business Plan' && userData != null" ng-click="openWeb('https://www.bluepaymax.com/member/uploads/business_tool/BLUEPAY-MAX-BUSINESS-PLAN.pdf')">
+              {{item.name}}
+            </div>
+
+
+<div ng-if="item.name == 'Team Follow Up' && userData != null" ng-click="openWeb('https://www.bluepaymax.com/member/uploads/business_tool/TEAM-FOLLOW-UP.pdf')">
+  {{item.name}}
+</div>
+
+
+<div ng-if="item.name == 'Code Of Ethics' && userData != null" ng-click="openWeb('https://www.bluepaymax.com/member/uploads/business_tool/CODE-OF-ETHICS-RULES-OF-CONDUCT.pdf')">
+  {{item.name}}
+</div>
+
+<div ng-if="item.name == 'My Wallet'" >
+  {{item.name}} : &#8377;{{wallettotal}}
+</div>
+
+<div ng-if="item.name == 'Wallet History' && userData.rolecode != null" ui-sref="wallet_statement" >
+  {{item.name}}
+</div>
+
+
+<div ng-if="item.name == 'Purchase List' && userData != null" ui-sref="buy_product_list" >
+  {{item.name}}
+</div>
+
+
+<div ng-if="item.name == 'Epin List' && userData != null" ui-sref="epin" >
+  {{item.name}}
+</div>
+
+<div ng-if="item.name == 'Financial Info' && userData != null">
+  {{item.name}}
+</div>
+
+<div ng-if="item.name == 'Daily Report' && userData != null" ui-sref="payoutinfo">
+  {{item.name}}
+</div>
+
+<div ng-if="item.name == 'Weekly Report' && userData != null" ui-sref="weeklypayoutinfo">
+  {{item.name}}
+</div>
+
+<div ng-if="item.name == 'Repurchase Report' && userData != null" ui-sref="repurchasepayoutinfo">
+  {{item.name}}
+</div>
+
+
+<div ng-if="item.name == 'About'" ng-Controller="CMSCtrl" ui-sref="cms_about({cms_type: 'about_us'})">
+  {{item.name}}
+</div>
+
+<div ng-if="item.name == 'Privacy Policy'" ng-Controller="CMSCtrl" ui-sref="cms_policy({cms_type: 'privacy_policy'})">
+  {{item.name}}
+</div>
+
+<div ng-if="item.name == 'Terms and Condition'" ng-Controller="CMSCtrl" ui-sref="cms_terms({cms_type: 'terms_and_conditions'})">
+  {{item.name}}
+</div>
+
+<div ng-if="item.name == 'Intro Video'" ng-Controller="CMSCtrl" ui-sref="cms_intro({cms_type: 'intro_video'})">
+  {{item.name}}
+</div>
+
+<div ng-if="item.name == 'Change Password'" ui-sref="changePassword">
+  {{item.name}}
+</div>
+
+<div ng-if="item.name == 'My Profile'" ui-sref="profile">
+  {{item.name}}
+</div>
+
+<div ng-if="item.name == 'My Reference'" ui-sref="my_reference">
+  {{item.name}}
+</div>
+
+             <div ng-if="item.name != 'My Reference' && item.name != 'Contact Admin' && item.name != 'Sponsor New' && item.image != 'ion-catt' && item.name != 'Fuel Card' && item.name != 'Reloadable Fuel Card' && item.name != 'Reloadable Card' && item.name != 'Non Reloadable Card' && item.name != 'Reload Your Card' && item.name != 'Profit Cards' && item.name != 'Application Form' && item.name != 'Business Plan' && item.name != 'Team Follow Up' && item.name != 'Code Of Ethics' && item.name != 'My Wallet' && item.name != 'Wallet History' && item.name != 'Purchase List' && item.name != 'Epin List' && item.name != 'Financial Info' && item.name != 'Daily Report' && item.name != 'Weekly Report' && item.name != 'Repurchase Report' && item.name != 'About' && item.name != 'Privacy Policy' && item.name != 'Terms and Condition' && item.name != 'Intro Video' && item.name != 'Change Password' && item.name != 'My Profile' && item.name != 'Cards & Vouchers'  ">
+              {{item.name}}
+            </div>
+
+            </ion-item>
+
+          </div>
+        </ion-list>
+
+      </ion-content>
+
+    </ion-side-menu>
+
+  </ion-side-menus>
+
+  </body>
+</html>

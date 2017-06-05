@@ -1,0 +1,21 @@
+<ion-view view-title="Checkout As" ><!-- ng-init="defaultcheckoutas()" -->
+ 	<ion-content class="">		
+		<ion-list >		
+	      <ion-radio ng-model="checkoutasChoice" value="member" checked ng-change="setcheckoutasChoice('member')">
+	       Checkout as Member 
+	      </ion-radio>
+
+	      <ion-radio ng-model="checkoutasChoice" value="ecommuser" ng-change="setcheckoutasChoice('ecommuser')">
+	       Checkout as E-commerce User
+	      </ion-radio>
+
+	      <ion-radio ng-model="checkoutasChoice" value="guest" ng-change="setcheckoutasChoice('guest')">
+	       Checkout as Guest
+	      </ion-radio>
+
+	      <button ng-if="checkoutasChoice" class="button button-block button-energized" ng-click="checkoutCart(cartProducts)">
+            Checkout
+        </button>
+    </ion-list>
+	</ion-content>
+</ion-view>

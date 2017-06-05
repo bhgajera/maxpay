@@ -1,0 +1,84 @@
+<ion-view view-title="Login" hide-nav-bar="true" class="stable-bg">
+  <ion-content>
+    <!-- <div class="padding row">
+      <div class="col">
+        <a ui-sref="home" class="dark" style="color: black">Skip</a>
+      </div>
+    </div>  -->
+    <!-- Logo -->
+    <div class="padding text-center">      
+      <img src="img/logo.png" style="width:51%; height:61%" />
+      <!-- <h2>Bluepay Max</h2> -->
+      <!-- <p>Mobile E-commerce</p> -->
+    </div>
+
+    <!-- Login form --> 
+     
+    <div class="list list-inset" >
+      <label class="item item-input">
+        <input style="font-size:18px" type="text" ng-model="login.login_id" placeholder="Login Id">
+      </label>
+      <div ng-if="!showPassword">
+      <label class="item item-input" style="padding: 6px 20px 5px 16px;">
+        <input style="font-size:18px" type="password" ng-model="login.password" placeholder="Password">
+        <label ng-click="toggleShowPassword()" class="ion-eye" style="font-size: 21px;"></label>
+      </label>
+    </div>
+      <div  ng-if="showPassword">
+        <label class="item item-input" style="padding: 6px 20px 5px 16px;">
+        <input style="font-size:18px" type="text" ng-model="login.password" placeholder="Password">
+        <label ng-click="toggleShowPassword()" class="ion-eye-disabled" style="font-size: 21px;"></label>
+      </label>
+      </div>
+    </div>
+    <div ng-if="errors" class="list list-inset" align="center">
+      <p style="color:red;">{{errorMsg}}</p>
+    </div>
+    <div style="margin: auto;display: table;">
+      <!-- <span style="padding-right: 10px;" >
+        <input type="radio" name="type" id="user" value="user" ng-model="login_type"  ng-change="setType('user')">&nbsp&nbsp<label for="user" > User</label>
+      </span> -->
+      <!-- <span style="padding-right: 10px;">
+        <input type="radio" name="type" id="member" value="member" ng-model="login_type" ng-change="setType('member')">&nbsp&nbsp <label for="member"> Member</label>
+      </span> -->
+    </div>
+    <div class="padding">
+      <button class="button button-block button-energized" ng-click="Login()">
+        Login
+      </button>
+    </div>
+
+    <!-- Social login -->
+    <!-- <div class="padding row">
+      <div class="col facebook-login icon-left social-button">
+        <i class="icon ion-social-facebook"></i>
+        <span>Facebook</span>
+      </div>
+      <div class="col twitter-login icon-left social-button">
+        <i class="icon ion-social-twitter"></i>
+        Twitter
+      </div>
+    </div> -->
+
+    <!-- Other links -->
+    <div class="padding row">
+      <div class="col">
+        <span ui-sref="forgotpass" class="dark">Forgot password?</span>
+      </div>
+     <!--  <div class="col">
+        <a ui-sref="register" class="dark">New here? Sign up</a>
+      </div> -->
+    </div>  
+    <div class="padding row">
+      <div class="col">
+        <!-- <a ui-sref="member_signup" class="dark">Member Sign Up Here.</a> -->     
+        <button ui-sref="member_signup" class="button button-block button-energized">
+          Member Sign Up
+        </button>
+      </div>
+    </div>  
+
+
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,60 @@
+ <ion-view view-title="Payment Information">
+  <ion-content class="">
+    <ion-list>
+    <ion-item>Select payment option:</ion-item>
+    <!-- <div class="list list-inset">      
+      <ion-radio ng-model="paymentchoice" ng-value="'1'">Online payment</ion-radio>
+      <ion-radio ng-model="paymentchoice" ng-value="'2'">Neft</ion-radio>
+    </div> -->
+    <div class="list list-inset">    
+        <ion-radio ng-repeat="item in paymentoptionList"
+                   ng-value="item.value"
+                   ng-model="paymentdata.selectedopt">
+          {{ item.text }}
+        </ion-radio>
+        <!-- Online payment Div -->
+        <!-- <div class="list list-inset" ng-if="paymentdata.selectedopt=='1'">        
+        </div> -->
+        <div class="list" ng-if="paymentdata.selectedopt=='2'">
+          <div class="item item-divider"> 
+              Neft Transaction
+          </div>   
+          <div class="item">
+            <input type="text" placeholder="Transaction ID" ng-model="payment.transactionId" />
+          </div>
+          <div class="item item-input item-select">
+            <div class="input-label">
+              Select Branch
+            </div>
+            <div  class="pull-right">
+              <select ng-model="payment.bankname" ng-change="showSelectValue(payment.bankname)">
+              <option value="ICICI">ICICI</option>
+              <option value="AXIS">AXIS</option>
+              <option value="SBI">SBI</option>
+              <option value="OFFICE">OFFICE</option>            
+              </select>
+            </div>
+          </div> 
+          <div class="item">
+            <input type="text" placeholder="Branch Location" ng-model="payment.branchlocation" />
+          </div>               
+            <!-- <label class="item item-input">
+              <span class="input-label">Date</span>
+              <input type="date" ng-change="checkdate(payment.transactiondate)" ng-model="payment.transactiondate">
+            </label> -->
+            <div class="item">
+              <label class="item-input item-stacked-label" ng-click="showDatePicker()">
+                 <span class="input-label">Date</span>
+                 <label>{{payment.transactiondate}}</label>
+              </label>
+            </div>
+          </div>        
+    </div>
+    <div class="padding">    
+      <button class="button button-block button-energized" ng-click="completeOrder()">
+       Finish your order
+      </button>
+    </div>    
+    </ion-list>
+  </ion-content>
+</ion-view>
