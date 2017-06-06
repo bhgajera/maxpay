@@ -453,6 +453,20 @@ angular.module('starter.services', [])
               headers:{'User-Id':$rootScope.userData.user_id, 'Api-Key':$rootScope.userData.api_key},
               data: form
           })
+        },
+        getOrderTrack: function(docket_number){
+          var form = new FormData();
+          form.append("docket_number", 'ECZ21625');
+
+          var api = 'track_my_shipping';
+          var myurl = $rootScope.memberUrl;
+          console.log(myurl+"   / "+api);
+          return $http({
+              url: myurl+api,
+              method: "POST",
+              headers:{'User-Id':$rootScope.userData.user_id, 'Api-Key':$rootScope.userData.api_key},
+              data: form
+          })
         }
     }
   }

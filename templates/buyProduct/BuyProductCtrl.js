@@ -76,15 +76,29 @@ $scope.getOrderHistory = function(){
 })
 
 
-.controller('BuyProductTrackCtrl', function($scope, $rootScope,$ionicLoading,OrderService, Product,$cordovaToast, $ionicLoading,$ionicHistory, $ionicNavBarDelegate,$rootScope,$state, $stateParams) {      
+.controller('BuyProductTrackCtrl', function($scope, $rootScope, $ionicLoading,OrderService, Product,$cordovaToast, $ionicLoading, $ionicHistory, $ionicNavBarDelegate,$rootScope,$state, $stateParams) {      
     $rootScope.userData = JSON.parse(localStorage.getItem("userData")) || null;
     root = $rootScope;
     scope = $scope;
     
     console.log($stateParams);
-    $scope.myOrder = $rootScope.buyProduct[$stateParams.index] || [];
-    
-    
+
+    OrderService.getOrderTrack($stateParams.docket).success(function(response){
+			$ionicLoading.hide();
+
+            console.log("Order Track >>> "+JSON.stringify(response));
+			$scope.orderTrack = response;
+			
+			
+    	}).error(function(err){
+           $ionicLoading.hide();
+    		console.log(JSON.stringify(err));
+    		if(err.code == 400 & err.message == 'Orders doesnot Exist'){
+    			$scope.moreData = false;
+    		}
+    		$scope.msg = err.message; 
+    	}) 
+
    	        
    	console.log($rootScope.buyProduct);    
    	        

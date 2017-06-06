@@ -337,3 +337,7 @@ ion-item.c_item {
 .reloadcardpage h2{ font-size: 20px;}
 .coverimage { width: 100%; background-color: #fff; background-size:contain; background-position: center; background-repeat: no-repeat; margin-bottom: 2px; }
 .coverimage:before{ padding-top: 70%; content: ""; display: block;}
+.trackbubble { background:#fff; margin-bottom: 15px; border-radius: 6px; border-top: solid 4px #2988bc;border-bottom: solid 4px #2988bc; }
+.trackbubble h5{ color: #2988bc; }
+.ordertrackingpage { background: #ddd;}
+.ordertrackingpage .orderblock  { border-radius: 5px;}

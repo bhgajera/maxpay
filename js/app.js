@@ -623,7 +623,7 @@ angular.module('starter', ['ionic','ngCordova', 'starter.controllers', 'starter.
   })
   
    .state('buy_product_track',{
-    url:'/buy_product_track/:index',
+    url:'/buy_product_track/:docket',
     templateUrl:'templates/buyProduct/buyProductTrack.html',
     controller:'BuyProductTrackCtrl'
   })

@@ -1,56 +1,54 @@
 <ion-view view-title="My Orders">
-  <ion-content class="orderdetail">   	
-   	<ion-item ng-if="msg != null">{{msg}}</ion-item>    
-   	<div class="orderwrapper">
-   	    <div class="err-mgs" ng-if="!myOrder">Order Detail not found </div> 
-   	    <div class="orderdata orderblock">
-   	         <h4 class="title">Order Detail</h4>
-                <div class="row"><div class="col col-40">Order No.</div><div class="col col-60"><span ng-bind="myOrder.order_no"></span></div></div>
-                <div class="row"><div class="col col-40">Invoice No.</div><div class="col col-60"><span ng-bind="myOrder.invono"></span></div></div>
-                <div class="row"><div class="col col-40">Order Date</div><div class="col col-60"><span ng-bind="myOrder.order_date"></span></div></div>
-                <div class="row" ng-if="myOrder.total_amount"><div class="col col-40">Total Amount</div><div class="col col-60"><span ng-bind="myOrder.total_amount | currency:'&#8377;'"></span></div></div>
-   	            </div>
-        <div class="orderblock orderstatus">
-            <h4 class="title">Order Status</h4>
-                        <ul class="progresslist">
-                           <li><i class="icon ion-record"></i>{{myOrder.oActive}}</li>
-                           <li><i class="icon ion-record"></i>{{myOrder.Active}}</li>
-                       </ul>
-                    </div>
-        <div class="order_details orderblock"> 
-            <h4 class="title">Product Detail</h4>
-            <div class="orderlist" ng-repeat="order in myOrder.order_details">
-            <div class="row"><div class="col col-40">Title</div><div class="col col-60"><span ng-bind="order.product_title"></span></div></div>
-            <div class="row"><div class="col col-40">Category</div><div class="col col-60"><span ng-bind="order.product_category"></span></div></div>
-            <div class="row"><div class="col col-40">Sub category</div><div class="col col-60"><span ng-bind="order.product_subcategory"></span></div></div>
-            <div class="row"><div class="col col-40">Quantity</div><div class="col col-60"><span ng-bind="order.qty"></span></div></div>
-            <div class="row"><div class="col col-40">Order amount</div><div class="col col-60"><span ng-bind="order.order_amount | currency:'&#8377;'"></span></div></div>
-            <div class="row" ng-if="order.total_order_amount"><div class="col col-40">Total amount</div><div class="col col-60"><span ng-bind="order.total_order_amount | currency:'&#8377;'"></span></div></div>
-                 
-
-                            
-                
+    <ion-content class="orderdetail ordertrackingpage">
+        <ion-item ng-if="msg != null">{{msg}}</ion-item>
+        <div class="orderwrapper">
+            <div class="orderdata orderblock">
+                <h4 class="title">Tracking Detail</h4>
+                <div class="row">
+                    <div class="col col-50">Docket No.</div>
+                    <div class="col col-50"><span ng-bind="orderTrack.order_id"></span></div>
                 </div>
-                  </div>
-        <div class="billingdetail orderblock" >
-           <h4 class="title">Billing Detail</h4>
-            <div class="row" ng-if="myOrder.billing_address"><div class="col col-40">Address</div><div class="col col-60"><span ng-bind="myOrder.billing_address"></span></div></div>
-            <div class="row" ng-if="myOrder.billing_city"><div class="col col-40">City</div><div class="col col-60"><span ng-bind="myOrder.billing_city"></span></div></div>
-            <div class="row" ng-if="myOrder.billing_state"><div class="col col-40">State</div><div class="col col-60"><span ng-bind="myOrder.billing_state"></span></div></div>
-            <div class="row" ng-if="myOrder.billing_postcode"><div class="col col-40">Postcode</div><div class="col col-60"><span ng-bind="myOrder.billing_postcode"></span></div></div>
-            <div class="row" ng-if="myOrder.billing_mail"><div class="col col-40">Email</div><div class="col col-60"><span ng-bind="myOrder.billing_mail"></span></div></div>
-            <div class="row" ng-if="myOrder.billing_phone"><div class="col col-40">Phone</div><div class="col col-60"><span ng-bind="myOrder.billing_phone"></span></div></div>
-                </div>   
-        <div class="shippingdetail orderblock">
-              <h4 class="title">Shipping Detail</h4>
-            <div class="row" ng-if="myOrder.shipping_address"><div class="col col-40">Address</div><div class="col col-60"><span ng-bind="myOrder.shipping_address"></span></div></div>
-            <div class="row" ng-if="myOrder.shipping_city"><div class="col col-40">City</div><div class="col col-60"><span ng-bind="myOrder.shipping_city"></span></div></div>
-            <div class="row" ng-if="myOrder.shipping_state"><div class="col col-40">State</div><div class="col col-60"><span ng-bind="myOrder.shipping_state"></span></div></div>
-            <div class="row" ng-if="myOrder.shipping_postcode"><div class="col col-40">Postcode</div><div class="col col-60"><span ng-bind="myOrder.shipping_postcode"></span></div></div>
-            <div class="row" ng-if="myOrder.shipping_mail"><div class="col col-40">Email</div><div class="col col-60"><span ng-bind="myOrder.shipping_mail"></span></div></div>
-            <div class="row" ng-if="myOrder.shipping_phone"><div class="col col-40">Phone</div><div class="col col-60"><span ng-bind="myOrder.shipping_phone"></span></div></div>
+                <div class="row">
+                    <div class="col col-50">Shipping Date</div>
+                    <div class="col col-50"><span ng-bind="orderTrack.tracking_ship_date"></span></div>
+                </div>
+                <div class="row">
+                    <div class="col col-50">Tracking Number</div>
+                    <div class="col col-50"><span ng-bind="orderTrack.tracking_number"></span></div>
+                </div>
+                <div class="row">
+                    <div class="col col-50">Tag</div>
+                    <div class="col col-50"><span ng-bind="orderTrack.tag"></span></div>
+                </div>
+                <div class="row">
+                    <div class="col col-50">Signed By</div>
+                    <div class="col col-50"><span ng-bind="orderTrack.signed_by "></span></div>
+                </div>
+            </div>
+
+            <div class="trackbubble " ng-repeat="trackList in orderTrack.checkpoints">
+                 <div class="row">
+                    <div class="col col-100"><h5>Message</h5><p ng-bind="trackList.message"></p></div>
+                    <!--<div class="col col-50"><h5>Slug</h5><p ng-bind="trackList.slug"></p></div>-->
+                    </div>
+                <div class="row">
+                    <div class="col col-100"><h5>Checkpoint time</h5><p ng-bind="trackList.checkpoint_time | date:'medium'"></p></div>
+                </div>
+                <div class="row">
+                    <div class="col col-50"><h5>City</h5><p ng-bind="trackList.city"></p></div>
+                    <div class="col col-50"><h5>Zip</h5><p ng-bind="trackList.zip"></p></div>
+                </div>
+                <div class="row">
+                    
+                    <div class="col col-50"><h5>State</h5><p ng-bind="trackList.state"></p></div>
+                    <div class="col col-50"><h5>Tag</h5><p ng-bind="trackList.tag"></p></div>
+                    </div>
+               
+
+            </div>
+            
+
         </div>
-        </div>
-   	
-  </ion-content>
+
+    </ion-content>
 </ion-view>
