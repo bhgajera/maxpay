@@ -32,6 +32,61 @@ $scope.orderMessage = "";
     //alert($scope.bankname);
     $scope.bankname = opt;
    } 
+$scope.redeem_profit_card = function() {
+  console.log('+++++' + $rootScope.redeemCardDetail);
+  if($rootScope.redeemCardDetail == '') {
+    alert('Please enter card detail');
+    return;  
+  }
+   var form = new FormData();
+                 form.append("grand_total", $rootScope.totalCardAmount);
+                 form.append("profit_card_no", $rootScope.redeemCardDetail);
+                // form.append("reference_no", resorce.reference_no);
+                // form.append("transaction_details",JSON.stringify(temp));
+
+                console.log("post_data ==>" + form);
+                console.log("user-id ==>" + $rootScope.userData.user_id);
+                console.log("Api-Key ==>" + $rootScope.userData.api_key);
+
+                var req = {
+                    method: "POST",
+                    headers:{'User-Id':$rootScope.userData.user_id, 'Api-Key':$rootScope.userData.api_key},
+                    url: $rootScope.memberUrl + "/redeem_profit_card",
+                    data: form
+                };
+                $http(req)
+                    .success(function(data, status, headers, config) {
+                        $ionicLoading.hide();
+                        console.log("success in  redeem_profit_card  ==>" + JSON.stringify(data))
+                        if (data.code == 200 || data.code == "200") {
+                            console.log(data.order_details.message)
+                            localStorage.setItem("message", data.order_details.message);
+                            setTimeout(function() {
+                                var msg = localStorage.getItem("message");
+                                document.getElementById("msg_success").innerHTML = msg;
+                            }, 200);
+
+                        } else {
+                            localStorage.setItem("message", data.message);
+                            alert(data.message);
+                            setTimeout(function() {
+                                var msg = localStorage.getItem("message");
+                                document.getElementById("msg_failed").innerHTML = msg;
+                            }, 200);  
+                        }
+                    })
+                    .error(function(data, status, headers, config) {
+                            $ionicLoading.hide();
+                            console.log(data);
+                            localStorage.setItem("message", data.message);
+                            alert(data.message);
+                            setTimeout(function() {
+                                var msg = localStorage.getItem("message");
+                                document.getElementById("msg_failed").innerHTML = msg;
+                            }, 200);
+                    });
+
+} 
    $scope.showDatePicker = function(){
      var options = {
       date: new Date(),

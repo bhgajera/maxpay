@@ -2,6 +2,7 @@ angular.module('starter.controllers')
 .controller('checkoutPaymentCtrl', function($scope,$rootScope,$ionicLoading, $cordovaDatePicker,$ionicHistory,$cordovaToast,$state,Product,CheckoutService,$http,$timeout) {
 scope = $scope;
     root = $rootScope;
+  $rootScope.countryArr = [{'id':'USA','name':'United States'}, {'id':'SAU','name':'Saudi Arabia'}, {'id':'NPL','name':'Nepal'}, {'id':'GBR','name':'United Kingdom'},{'id':'CHN','name':'China'},{'id':'CAN','name':'Canada'},{'id':'IND','name':'India'},{'id':'JPN','name':'Japan'}];
 $scope.orderMessage = "";
   console.log("called Checkout checkoutPaymentCtrl");
   $scope.showLoading = function() {
@@ -27,7 +28,7 @@ $scope.orderMessage = "";
    $scope.paymentdata = {
     //selectedopt: '1'   //default seleceted payment option
    };
-   $scope.showSelectValue = function(opt){
+   $scope.showSelectValue = function(opt) {
     //alert($scope.bankname);
     $scope.bankname = opt;
    } 
@@ -45,7 +46,6 @@ $scope.orderMessage = "";
     };
     document.addEventListener("deviceready", function () {
       $cordovaDatePicker.show(options).then(function(date){
-          //alert(date);
           $scope.payment.transactiondate = date.getDate() +"/"+date.getMonth()+1+"/"+date.getFullYear();
       });
     }, false);
@@ -276,15 +276,37 @@ $scope.orderMessage = "";
                    });
 
             };
-            $scope.postTransactionPlugin = function(response) {
+            $scope.postTransactionPlugin = function(response,resorce) {
 
                 console.log("++++++++++++");
-                   
-                    var form = new FormData();
-                form.append("order_id", response.);
-                form.append("reference_no", reference_no);
-                form.append("order_status_id", order_status_id)
-                form.append("transaction_details", JSON.stringify(temp));
+                console.log(response);
+                console.log("++++++++++++");
+                console.log(resorce);
+                console.log("++++++++++++");
+                
+                 for (var key in response) {
+                    response[key] = response[key][0];
+
+                    if(key == "Description"){
+                      delete response[key];
+                    }
+                    if(key == "PaymentMethod"){
+                      delete response[key];
+                    }
+                    if(key == "RequestID"){
+                      delete response[key];
+                    }
+              }
+              response['AccountID'] = resorce.account_id;
+
+            var temp = [];
+
+            temp.push(JSON.parse(response));
+                        console.log("Transaction_details ==>"+JSON.stringify(response));
+                var form = new FormData();
+                form.append("order_id", resorce.order_id);
+                form.append("reference_no", resorce.reference_no);
+                form.append("transaction_details",JSON.stringify(temp));
 
                 console.log("post_data ==>" + form);
                 console.log("user-id ==>" + $rootScope.userData.user_id);
@@ -292,22 +314,20 @@ $scope.orderMessage = "";
 
                 var req = {
                     method: "POST",
-            headers:{'User-Id':$rootScope.userData.user_id, 'Api-Key':$rootScope.userData.api_key},
+                    headers:{'User-Id':$rootScope.userData.user_id, 'Api-Key':$rootScope.userData.api_key},
                     url: $rootScope.memberUrl + "/post_transaction_details",
                     data: form
                 };
                 $http(req)
                     .success(function(data, status, headers, config) {
                         $ionicLoading.hide();
-                        console.log("success ==>" + JSON.stringify(data))
+                        console.log("success in  post_transaction_details  ==>" + JSON.stringify(data))
 
                         if (data.code == 200 || data.code == "200") {
                             $state.go("checkout_message_success");
                             console.log(data.order_details.message)
 
                             localStorage.setItem("message", data.order_details.message);
-
-
                             setTimeout(function() {
                                 var msg = localStorage.getItem("message");
                                 document.getElementById("msg_success").innerHTML = msg;
@@ -331,35 +351,34 @@ $scope.orderMessage = "";
                     .error(function(data, status, headers, config) {
                         $ionicLoading.hide();
                         console.log("error ==>" + JSON.stringify(data))
-                    });
+                        $state.go("checkout_message_fail");
 
+                            localStorage.setItem("message", data.message);
+
+                            setTimeout(function() {
+                                var msg = localStorage.getItem("message");
+                                document.getElementById("msg_failed").innerHTML = msg;
+                            }, 200);
+                    });
                 console.log("++++++++++++");
             };
-
-
             $scope.openPaymentView = function(webviewLink,order_id,reference_no,order_status_id,account_id){
-
-
-
             var ref = window.open(webviewLink,'_blank','location=no');
-
-            var myCallback =  function(event){
+            var myCallback =  function(event) {
 
             var current_url = event.url;
 
             console.log(event.type);
             console.log(event.url);
-
-
             if(event.type == "loadstop" || event.type == "Loadstop" || event.type == "LOADSTOP"){
 
-            if (event.url.match("https://www.bluepaymax.com/order_success")) {
+            if(event.url.match("https://www.bluepaymax.com/order_success")) {
              ref.close();
 
             $scope.postTransaction(current_url,order_id,reference_no,order_status_id,account_id);
 
 
-            }else if(event.url.match("https://www.bluepaymax.com/order_failure")){
+            } else if(event.url.match("https://www.bluepaymax.com/order_failure")) {
 
             ref.close();
 
@@ -546,16 +565,19 @@ $scope.orderMessage = "";
                                                                  if( PaymentStatus == "Authorized") {
 
                                                                       $scope.postTransactionPlugin(response,$scope.onlineres);
-//                                                          $state.go('home');
+                                                                       // localStorage.setItem("addToCardProduct",JSON.stringify([]));
+                                                                       localStorage.removeItem("addToCardProduct");
+                                                                        delete $rootScope.cartProducts;
+                                                                        $rootScope.cartProducts = [];
                                                                  }
                                                                  else {
-                                                                     $scope.postTransactionPlugin(response);
+                                                                     $scope.postTransactionPlugin(response,$scope.onlineres);
                                                                  alert("Transaction aborted");
                                                                     // gotoFailurePage()
                                                                  }
                                                              },
                             "onTransactionAborted": function (aborted) {
-                                                                     $scope.postTransactionPlugin(aborted);
+                                                                     $scope.postTransactionPlugin(aborted,$scope.onlineres);
                                                                     alert("Transaction aborted");
                                                                  },
                                          "parameters": {
@@ -569,7 +591,7 @@ $scope.orderMessage = "";
                                              "currency":currency,
                                              "txnDescrip":txnDescrip,
                                              "billingEmail":billingEmail,
-                                             "billingName":billingName,
+                                             "billingName":billingName.trim(),
                                              "billingAddress":billingAddress,
                                              "billingCity":billingCity,
                                              "billingPostalCode":billingPostalCode,

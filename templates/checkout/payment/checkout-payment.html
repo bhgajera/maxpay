@@ -6,6 +6,21 @@
       <ion-radio ng-model="paymentchoice" ng-value="'1'">Online payment</ion-radio>
       <ion-radio ng-model="paymentchoice" ng-value="'2'">Neft</ion-radio>
     </div> -->
+     <ion-item>
+     <div class="list">
+        <div>Profit Card Redeem</div>
+        <!-- <div class="item">
+        <label for="chkPassport">
+                <input type="checkbox" id="chkPassport" ng-model="ShowPassport" ng-change="ShowHide()" />
+                Do You have a Profit Card?
+            </label>
+          </div> -->
+          <div class="item">  
+              <input type="number" ng-model="redeemCardDetail"  style="border: 1px solid #ccc; width: 100%;" id="txtPassportNumber" />
+              <button ng-click="redeem_profit_card()" class="button button-block button-energized">Apply Redeem Card</button>
+         </div>
+     </div>     
+    
     <div class="list list-inset">    
         <ion-radio ng-repeat="item in paymentoptionList"
                    ng-value="item.value"
