@@ -34,7 +34,7 @@ $scope.orderMessage = "";
    } 
 $scope.redeem_profit_card = function() {
   console.log('+++++' + $rootScope.redeemCardDetail);
-  if($rootScope.redeemCardDetail == '') {
+  if($rootScope.redeemCardDetail == '' || typeof $rootScope.redeemCardDetail == "undefined") {
     alert('Please enter card detail');
     return;  
   }
@@ -51,7 +51,7 @@ $scope.redeem_profit_card = function() {
                 var req = {
                     method: "POST",
                     headers:{'User-Id':$rootScope.userData.user_id, 'Api-Key':$rootScope.userData.api_key},
-                    url: $rootScope.memberUrl + "/redeem_profit_card",
+                    url: $rootScope.memberUrl + "redeem_profit_card",
                     data: form
                 };
                 $http(req)

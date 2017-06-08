@@ -630,6 +630,12 @@ $scope.totalAmount =  function(){
     $scope.shippingTotal();
 })
 
+// KYC controller
+.controller('kycCtrl', function($scope,$cordovaToast, $ionicHistory,$rootScope,RegisterService,LoginService,$ionicSlideBoxDelegate,$state,$ionicLoading,$ionicHistory) {
+  
+})
+
+
 // Authentication controller
 .controller('AuthCtrl', function($scope,$cordovaToast, $ionicHistory,$rootScope,RegisterService,LoginService,$ionicSlideBoxDelegate,$state,$ionicLoading,$ionicHistory) {
     // hide back butotn in next view

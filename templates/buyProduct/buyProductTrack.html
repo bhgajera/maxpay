@@ -25,7 +25,6 @@
                     <div class="col col-50"><span ng-bind="orderTrack.signed_by "></span></div>
                 </div>
             </div>
-
             <div class="trackbubble " ng-repeat="trackList in orderTrack.checkpoints">
                  <div class="row">
                     <div class="col col-100"><h5>Message</h5><p ng-bind="trackList.message"></p></div>
@@ -43,12 +42,7 @@
                     <div class="col col-50"><h5>State</h5><p ng-bind="trackList.state"></p></div>
                     <div class="col col-50"><h5>Tag</h5><p ng-bind="trackList.tag"></p></div>
                     </div>
-               
-
             </div>
-            
-
         </div>
-
     </ion-content>
 </ion-view>

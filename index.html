@@ -209,6 +209,10 @@
   {{item.name}}
 </div>
 
+<div ng-if="item.name == 'kyc for reward' && userData != null" ui-sref="kycpage" >
+  {{item.name}}
+</div>
+
 <div ng-if="item.name == 'My Wallet'" >
   {{item.name}} : &#8377;{{wallettotal}}
 </div>
@@ -272,7 +276,7 @@
   {{item.name}}
 </div>
 
-             <div ng-if="item.name != 'My Reference' && item.name != 'Contact Admin' && item.name != 'Sponsor New' && item.image != 'ion-catt' && item.name != 'Fuel Card' && item.name != 'Reloadable Fuel Card' && item.name != 'Reloadable Card' && item.name != 'Non Reloadable Card' && item.name != 'Reload Your Card' && item.name != 'Profit Cards' && item.name != 'Application Form' && item.name != 'Business Plan' && item.name != 'Team Follow Up' && item.name != 'Code Of Ethics' && item.name != 'My Wallet' && item.name != 'Wallet History' && item.name != 'Purchase List' && item.name != 'Epin List' && item.name != 'Financial Info' && item.name != 'Daily Report' && item.name != 'Weekly Report' && item.name != 'Repurchase Report' && item.name != 'About' && item.name != 'Privacy Policy' && item.name != 'Terms and Condition' && item.name != 'Intro Video' && item.name != 'Change Password' && item.name != 'My Profile' && item.name != 'Cards & Vouchers'  ">
+             <div ng-if="item.name != 'My Reference' && item.name != 'Contact Admin' && item.name != 'Sponsor New' && item.image != 'ion-catt' && item.name != 'Fuel Card' && item.name != 'Reloadable Fuel Card' && item.name != 'Reloadable Card' && item.name != 'Non Reloadable Card' && item.name != 'Reload Your Card' && item.name != 'Profit Cards' && item.name != 'Application Form' && item.name != 'Business Plan' && item.name != 'Team Follow Up' && item.name != 'Code Of Ethics' && item.name != 'kyc for reward' && item.name != 'My Wallet' && item.name != 'Wallet History' && item.name != 'Purchase List' && item.name != 'Epin List' && item.name != 'Financial Info' && item.name != 'Daily Report' && item.name != 'Weekly Report' && item.name != 'Repurchase Report' && item.name != 'About' && item.name != 'Privacy Policy' && item.name != 'Terms and Condition' && item.name != 'Intro Video' && item.name != 'Change Password' && item.name != 'My Profile' && item.name != 'Cards & Vouchers'  ">
               {{item.name}}
             </div>
 

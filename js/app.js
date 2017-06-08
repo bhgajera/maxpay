@@ -125,6 +125,9 @@ angular.module('starter', ['ionic','ngCordova', 'starter.controllers', 'starter.
                                                                                                       }, {
                                                                                                       "image": "ion-tshirt-outline",
                                                                                                       "name": "Code of Ethics"
+                                                                                                      }, {
+                                                                                                      "image": "ion-tshirt-outline",
+                                                                                                      "name": "kyc for reward"
                                                                                                       }]
                                                                                           },
                                                                                           {
@@ -661,6 +664,11 @@ angular.module('starter', ['ionic','ngCordova', 'starter.controllers', 'starter.
     url: '/newmember_otp',
     templateUrl: 'templates/sponsornew/sponsornew_otp.html',
     controller: 'NewMemberCtrl'
+  })
+  .state('kycpage', {
+    url: '/kycpage',
+    templateUrl: 'templates/kyc/kycpage.html',
+    controller: 'kycCtrl'
   });
 
 
