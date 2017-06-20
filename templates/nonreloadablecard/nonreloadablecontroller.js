@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('nonreloadableCtrl', function($scope, $rootScope,$cordovaToast, $ionicLoading,$ionicHistory, $ionicNavBarDelegate,$state) {      
+.controller('nonreloadableCtrl', function($scope, $rootScope,$cordovaToast, $ionicLoading,$ionicHistory, $ionicNavBarDelegate,$state,cardsService) {      
     console.log("Called reloadableCtrl");
     $rootScope.cartProducts = JSON.parse(localStorage.getItem("addToCardProduct")) || [];
     $rootScope.cartReloadableCards =JSON.parse(localStorage.getItem("reloadablecard")) ||null;
@@ -14,6 +14,21 @@ angular.module('starter.controllers')
     $scope.hideLoading = function(){
       $ionicLoading.hide();
     };    
+
+
+
+    $scope.showLoading();
+    cardsService.get_nonreload_card(48).success(function(res){
+        $scope.hideLoading();
+        $scope.nonereloadcards = res;
+      console.log("nonereloadcards card");
+      console.log($scope.nonereloadcards);
+    }).error(function(err){
+        $scope.hideLoading(); 
+      alert(JSON.stringify(err));
+    })
+
+
     $scope.nonreloadabledata={};
     $rootScope.userData = JSON.parse(localStorage.getItem("userData")) || null;    
     $scope.nonreloadablePv = function(rechargval){              
@@ -39,7 +54,14 @@ angular.module('starter.controllers')
                     // error
                 });
                 return;
-            }                                    
+            }               
+
+            if (!$scope.nonereloadcards.output.product_sell_status)
+            {
+                var errormsg = $scope.nonereloadcards.output.product_status || "We are out of stock for this product. Inconvenience Regretted";
+                alert(errormsg);
+                return false;
+            }                     
             /*$cordovaToast.showShortBottom("call Api").then(function(success) {
                 //on success 
                 }, function (error) {

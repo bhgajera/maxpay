@@ -831,6 +831,53 @@ angular.module('starter.services', [])
               //data: form       
           });
         },
+        
+        get_yesbank_card:function(product_id){
+          var form = new FormData();
+          form.append("product_master_id", product_id);
+          return $http({              
+              url: $rootScope.memberUrl+'products/get_yesbank_card',
+              method: "POST",
+              headers:{'User-Id':$rootScope.userData.user_id, 'Api-Key':$rootScope.userData.api_key},
+              data: form       
+          });
+
+        },
+         get_hdfc_card:function(product_id){
+          var form = new FormData();
+          form.append("product_master_id", product_id);
+          return $http({              
+              url: $rootScope.memberUrl+'products/get_hdfc_card',
+              method: "POST",
+              headers:{'User-Id':$rootScope.userData.user_id, 'Api-Key':$rootScope.userData.api_key},
+              data: form       
+          });
+
+        },
+         get_nonreload_card:function(product_id){
+          var form = new FormData();
+          form.append("product_master_id", product_id);
+          return $http({              
+              url: $rootScope.memberUrl+'products/get_nonreload_card',
+              method: "POST",
+              headers:{'User-Id':$rootScope.userData.user_id, 'Api-Key':$rootScope.userData.api_key},
+              data: form       
+          });
+
+        },
+
+         get_fuel_card:function(product_id){
+          var form = new FormData();
+          form.append("product_master_id", product_id);
+          return $http({              
+              url: $rootScope.memberUrl+'products/get_fuel_card',
+              method: "POST",
+              headers:{'User-Id':$rootScope.userData.user_id, 'Api-Key':$rootScope.userData.api_key},
+              data: form       
+          });
+
+        },
+        
         getreloadYourcards: function(){
           // console.log("getreloadYourcards called >>>>>>>>>>>>>>>>>>>>>>>");
           //alert("service called");

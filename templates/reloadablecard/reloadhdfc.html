@@ -1,13 +1,13 @@
-<ion-view view-title="YES BANK Cards">
+<ion-view view-title="HDFC reloadable cards">
   <ion-content class="reloadcardpage">
     <div class="list list-inset">
       
-        <h2 ng-bind="yescards.output.product_headline"></h2>
-         <div class="coverimage" style="background-image:url({{yescards.images.image_1.image1_300_366}})">
-                <img class="full-image hide"  ng-src="{{yescards.images.image_1.image1_300_366}}"  alt=""/>
+        <h2 ng-bind="hdfccards.output.product_headline"></h2>
+         <div class="coverimage" style="background-image:url({{hdfccards.images.image_1.image1_300_366}})">
+                <img class="full-image hide"  ng-src="{{hdfccards.images.image_1.image1_300_366}}"  alt=""/>
           </div>
-          <h4 ng-bind="yescards.output.highlights"></h4>
-          <p ng-bind="yescards.output.product_description"></p>
+          <h4 ng-bind="hdfccards.output.highlights"></h4>
+          <p ng-bind="hdfccards.output.product_description"></p>
       
       <ion-item ng-if="msg != null">{{msg}}</ion-item>  
 

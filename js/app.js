@@ -92,14 +92,19 @@ angular.module('starter', ['ionic','ngCordova', 'starter.controllers', 'starter.
                                                                                           "name": "Cards & Vouchers",
                                                                                           "subMenu": [{
                                                                                                       "image": "ion-home",
-                                                                                                      "name": "Reloadable Card"
+                                                                                                      "name": "YES BANK Cards"
                                                                                                       }, {
                                                                                                       "image": "ion-home",
                                                                                                       "name": "Non Reloadable Card"
                                                                                                       }, {
                                                                                                       "image": "ion-home",
-                                                                                                      "name": "Reload Your Card"
-                                                                                                      }, {
+                                                                                                      "name": "Reload your YES Bank Card"
+                                                                                                    }, 
+                                                                                                    {
+                                                                                                      "image": "ion-home",
+                                                                                                      "name": "HDFC reloadable cards"
+                                                                                                    },
+                                                                                                    {
                                                                                                       "image": "ion-home",
                                                                                                       "name": "Profit Cards"
                                                                                                       }, {
@@ -570,6 +575,11 @@ angular.module('starter', ['ionic','ngCordova', 'starter.controllers', 'starter.
     url:'/reloadable',
     templateUrl:'templates/reloadablecard/reloadable.html',
     controller:'reloadableCtrl'
+  })
+  .state('reloadhdfccard',{
+    url:'/reloadhdfccard',
+    templateUrl:'templates/reloadablecard/reloadhdfc.html',
+    controller:'reloadablehdfcCtrl'
   })
   .state('cards',{
     url:'/cards',

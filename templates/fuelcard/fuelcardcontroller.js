@@ -1,7 +1,7 @@
 angular.module('starter.controllers')
 
 // Reload controller
-.controller('fuelcardCtrl', function($scope, $rootScope,$cordovaToast, $ionicLoading,$ionicHistory, $ionicNavBarDelegate,$state) {      
+.controller('fuelcardCtrl', function($scope, $rootScope,$cordovaToast, $ionicLoading,$ionicHistory, $ionicNavBarDelegate,$state,cardsService) {      
     console.log("Called fuelcardCtrl");    
     $rootScope.cartProducts = JSON.parse(localStorage.getItem("addToCardProduct")) || [];
     $rootScope.cartfuelcardableCards =JSON.parse(localStorage.getItem("fuelcardcard")) ||null;  
@@ -15,6 +15,20 @@ angular.module('starter.controllers')
     $scope.hideLoading = function(){
       $ionicLoading.hide();
     };    
+
+
+    $scope.showLoading();
+    cardsService.get_fuel_card(1352).success(function(res){
+        $scope.hideLoading();
+        $scope.fuelcard = res;
+      console.log("fuelcard card");
+      console.log($scope.fuelcard);
+    }).error(function(err){
+        $scope.hideLoading(); 
+      alert(JSON.stringify(err));
+    })
+
+
     $scope.fuelcarddata={};
     $rootScope.userData = JSON.parse(localStorage.getItem("userData")) || null;    
     $scope.fuelcardPv = function(rechargval){     
@@ -50,7 +64,16 @@ angular.module('starter.controllers')
                     // error
                 });
                 return;  
+            }
+
+            if (!$scope.fuelcard.output.product_sell_status)
+            {
+                var errormsg = $scope.fuelcard.output.product_status || "We are out of stock for this product. Inconvenience Regretted";
+                alert(errormsg);
+                return false;
             }             
+
+
             if($rootScope.cartfuelcardableCards!=null){
                 /*if($rootScope.cartfuelcardableCards.rechargevalue>1990){
                     $cordovaToast.showShortBottom("You cannot buy any other product with card.Please make a fresh purchase for other products").then(function(success) {
